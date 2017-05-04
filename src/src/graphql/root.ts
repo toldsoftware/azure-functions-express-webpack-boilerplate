@@ -1,5 +1,7 @@
+import { log } from '../log';
 
 function getFriends(obj: Human) {
+    log('getFriends', obj);
     return obj.friendIds.map(x => getHuman(x));
 }
 
@@ -39,6 +41,6 @@ function getHuman(id: string): Human {
 
 export const root = {
     test: () => getHuman('101'),
-    hero: (id: string) => getHuman(id),
-    human: (obj: any, args: { id: string }, context: any) => getHuman(args.id)
+    hero: (args: { id: string }) => getHuman(args.id),
+    // human: (obj: any, args: { id: string }, context: any) => getHuman(args.id)
 };

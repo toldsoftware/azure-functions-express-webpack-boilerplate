@@ -1,6 +1,8 @@
 import * as express from 'express';
+import { registerLog } from '../log';
 
 export const app = express();
+app.use((req, res, next) => { registerLog(req); next(); });
 
 app.get('/express', (req, res) => {
   res.json({
@@ -17,7 +19,6 @@ app.get('/express/:a', (req, res) => {
     b: req.params.b
   });
 });
-
 
 app.get('/express/:a/:b', (req, res) => {
   res.json({
