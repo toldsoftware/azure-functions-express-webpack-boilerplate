@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 166);
+/******/ 	return __webpack_require__(__webpack_require__.s = 170);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -26883,50 +26883,97 @@ module.exports = function(module) {
 /* 160 */,
 /* 161 */,
 /* 162 */,
-/* 163 */
+/* 163 */,
+/* 164 */,
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = __webpack_require__(75);
+const path = __webpack_require__(0);
+const fs = __webpack_require__(4);
 const log_1 = __webpack_require__(57);
 exports.app = express();
 exports.app.use((req, res, next) => { log_1.registerLog(req); next(); });
-exports.app.get('/express', (req, res) => {
-    res.json({
-        pattern: '/express',
-        a: req.params.a,
-        b: req.params.b
-    });
-});
-exports.app.get('/express/:a', (req, res) => {
-    res.json({
-        pattern: '/express/:a',
-        a: req.params.a,
-        b: req.params.b
-    });
-});
-exports.app.get('/express/:a/:b', (req, res) => {
-    res.json({
-        pattern: '/express/:a/:b',
-        a: req.params.a,
-        b: req.params.b
+// Doesn't work because dot extension problem in azure functions
+// app.use('/graphiql', express.static('files'));
+// Alternative (use query string ?file=FILE)
+// This will work with Azure Functions Proxies to map
+// /static/FILE
+// to
+// /fun-static/?file=
+exports.app.use((req, res, next) => {
+    const filename = req.query.file
+        || 'index.html';
+    const dir = __dirname.match('src-server')
+        ? path.join(__dirname, '../../../static')
+        : path.join(__dirname, '../static');
+    const p = path.join(dir, filename);
+    log_1.log('graphiql file handler', 'path', req.path, 'query', req.query, 'filename', filename, 'path', p);
+    // Doesn't work with azure function express
+    // res.sendFile(p);
+    // if (!fs.exists(p)) {
+    //   log('ERROR: File Does Not Exist');
+    //   res.statusCode = 404;
+    //   res.end('File Not Found: ' + p);
+    //   return;
+    // }
+    fs.readFile(p, (err, data) => {
+        log_1.log('readFile path=', p);
+        if (err != null) {
+            log_1.log('ERROR: ', err, p);
+            res.statusCode = 404;
+            res.end('File Not Found: ' + p);
+            return;
+        }
+        let body = data;
+        let type = 'text/plain';
+        if (p.match('\.html$')) {
+            type = 'text/html';
+        }
+        if (p.match('\.css$')) {
+            type = 'text/css';
+        }
+        if (p.match('\.js$')) {
+            type = 'application/x-javascript';
+        }
+        if (p.match('\.json$')) {
+            type = 'application/json';
+        }
+        if (p.match('\.jpg$')) {
+            type = 'image/jpeg';
+        }
+        if (p.match('\.png$')) {
+            type = 'image/png';
+        }
+        if (p.match('\.gif$')) {
+            type = 'image/gif';
+        }
+        if (p.match('\.ico$')) {
+            type = 'image/x-icon';
+        }
+        res.setHeader('Cache-Control', 'max-age=300000, public');
+        res.setHeader('Content-Type', type);
+        res.end(body, 'utf8');
     });
 });
 
 
 /***/ }),
-/* 164 */,
-/* 165 */,
-/* 166 */
+/* 166 */,
+/* 167 */,
+/* 168 */,
+/* 169 */,
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const azure_function_express_1 = __webpack_require__(50);
-const _app_1 = __webpack_require__(163);
+const _app_1 = __webpack_require__(165);
 global.__app = _app_1.app;
 global.__app_handler = azure_function_express_1.createHandler(_app_1.app);
 module.exports = global.__app_handler;
