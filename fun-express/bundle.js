@@ -26869,23 +26869,23 @@ module.exports = function(module) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = __webpack_require__(82);
 exports.app = express();
-exports.app.get('/api', (req, res) => {
+exports.app.get('/express', (req, res) => {
     res.json({
-        pattern: '/api',
+        pattern: '/express',
         a: req.params.a,
         b: req.params.b
     });
 });
-exports.app.get('/api/:a', (req, res) => {
+exports.app.get('/express/:a', (req, res) => {
     res.json({
-        pattern: '/api/:a',
+        pattern: '/express/:a',
         a: req.params.a,
         b: req.params.b
     });
 });
-exports.app.get('/api/:a/:b', (req, res) => {
+exports.app.get('/express/:a/:b', (req, res) => {
     res.json({
-        pattern: '/api/:a/:b',
+        pattern: '/express/:a/:b',
         a: req.params.a,
         b: req.params.b
     });

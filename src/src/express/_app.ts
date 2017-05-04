@@ -2,26 +2,26 @@ import * as express from 'express';
 
 export const app = express();
 
-app.get('/api', (req, res) => {
+app.get('/express', (req, res) => {
   res.json({
-    pattern: '/api',
+    pattern: '/express',
     a: req.params.a,
     b: req.params.b
   });
 });
 
-app.get('/api/:a', (req, res) => {
+app.get('/express/:a', (req, res) => {
   res.json({
-    pattern: '/api/:a',
+    pattern: '/express/:a',
     a: req.params.a,
     b: req.params.b
   });
 });
 
 
-app.get('/api/:a/:b', (req, res) => {
+app.get('/express/:a/:b', (req, res) => {
   res.json({
-    pattern: '/api/:a/:b',
+    pattern: '/express/:a/:b',
     a: req.params.a,
     b: req.params.b
   });
