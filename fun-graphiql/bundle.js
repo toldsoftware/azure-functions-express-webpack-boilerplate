@@ -26888,7 +26888,10 @@ exports.app.use((req, res, next) => {
             .replace(/^\/graphiql/, '')
             .replace(/\/(file)?$/, '')
         || 'index.html';
-    const p = path.join(__dirname, '../src/src/graphiql/files', filename);
+    const dir = __dirname.match('fun-graphiql')
+        ? path.join(__dirname, '../src/src/graphiql/files')
+        : path.join(__dirname, 'files');
+    const p = path.join(dir, filename);
     log('graphiql file handler', 'path', req.path, 'query', req.query, 'filename', filename, 'path', p);
     // Doesn't work with azure function express
     // res.sendFile(p);
@@ -27003,6 +27006,9 @@ module.exports = global.__app_handler;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 function getLog(req) {
+    if (console.log) {
+        return console.log.bind(console);
+    }
     return req.context.log;
 }
 exports.getLog = getLog;

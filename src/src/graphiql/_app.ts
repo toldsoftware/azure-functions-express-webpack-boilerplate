@@ -25,19 +25,30 @@ app.use((req, res, next) => {
     || 'index.html'
     ;
 
-  const p = path.join(__dirname, '../src/src/graphiql/files', filename);
+  const dir = __dirname.match('fun-graphiql')
+    ? path.join(__dirname, '../src/src/graphiql/files')
+    : path.join(__dirname, 'files');
+
+  const p = path.join(dir, filename);
   log('graphiql file handler', 'path', req.path, 'query', req.query, 'filename', filename, 'path', p);
 
   // Doesn't work with azure function express
   // res.sendFile(p);
 
+  // if (!fs.exists(p)) {
+  //   log('ERROR: File Does Not Exist');
+  //   res.statusCode = 404;
+  //   res.end('File Not Found: ' + p);
+  //   return;
+  // }
+
   fs.readFile(p, (err, data) => {
-    log('readFile path=' + p);
+    log('readFile path=', p);
 
     if (err != null) {
-      log('ERROR: ' + err);
+      log('ERROR: ', err, p);
       res.statusCode = 404;
-      res.end('File Not Found: ' + p, 'test/plain');
+      res.end('File Not Found: ' + p);
       return;
     }
 
