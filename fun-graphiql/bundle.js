@@ -26870,17 +26870,20 @@ module.exports = function(module) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = __webpack_require__(74);
 const path = __webpack_require__(0);
+const getLog_1 = __webpack_require__(215);
 exports.app = express();
 exports.app.use((req, res, next) => {
-    const log = req.context.log;
-    log('graphiql request received path=', req.path);
+    const log = getLog_1.getLog(req);
+    log('graphiql request received', 'path', req.path, 'query', req.query);
     next();
 });
 // Doesn't work because dot extension problem in azure functions
 // app.use('/graphiql', express.static('files'));
 // Alternative (use /file at end of path)
 exports.app.use('/graphql', (req, res, next) => {
+    const log = getLog_1.getLog(req);
     const filename = req.path.replace(/\/(file)?$/, '');
+    log('graphiql file handler', 'path', req.path, 'query', req.query, 'filename', filename);
     res.sendFile(path.join(__dirname, 'files', filename));
 });
 
@@ -26899,6 +26902,65 @@ const _app_1 = __webpack_require__(165);
 global.__app = _app_1.app;
 global.__app_handler = azure_function_express_1.createHandler(_app_1.app);
 module.exports = global.__app_handler;
+
+
+/***/ }),
+/* 169 */,
+/* 170 */,
+/* 171 */,
+/* 172 */,
+/* 173 */,
+/* 174 */,
+/* 175 */,
+/* 176 */,
+/* 177 */,
+/* 178 */,
+/* 179 */,
+/* 180 */,
+/* 181 */,
+/* 182 */,
+/* 183 */,
+/* 184 */,
+/* 185 */,
+/* 186 */,
+/* 187 */,
+/* 188 */,
+/* 189 */,
+/* 190 */,
+/* 191 */,
+/* 192 */,
+/* 193 */,
+/* 194 */,
+/* 195 */,
+/* 196 */,
+/* 197 */,
+/* 198 */,
+/* 199 */,
+/* 200 */,
+/* 201 */,
+/* 202 */,
+/* 203 */,
+/* 204 */,
+/* 205 */,
+/* 206 */,
+/* 207 */,
+/* 208 */,
+/* 209 */,
+/* 210 */,
+/* 211 */,
+/* 212 */,
+/* 213 */,
+/* 214 */,
+/* 215 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+function getLog(req) {
+    return req.context.log;
+}
+exports.getLog = getLog;
 
 
 /***/ })
