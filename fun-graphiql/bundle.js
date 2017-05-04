@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 167);
+/******/ 	return __webpack_require__(__webpack_require__.s = 168);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -26861,7 +26861,8 @@ module.exports = function(module) {
 /* 161 */,
 /* 162 */,
 /* 163 */,
-/* 164 */
+/* 164 */,
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26869,40 +26870,20 @@ module.exports = function(module) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = __webpack_require__(74);
 exports.app = express();
-exports.app.get('/express', (req, res) => {
-    res.json({
-        pattern: '/express',
-        a: req.params.a,
-        b: req.params.b
-    });
-});
-exports.app.get('/express/:a', (req, res) => {
-    res.json({
-        pattern: '/express/:a',
-        a: req.params.a,
-        b: req.params.b
-    });
-});
-exports.app.get('/express/:a/:b', (req, res) => {
-    res.json({
-        pattern: '/express/:a/:b',
-        a: req.params.a,
-        b: req.params.b
-    });
-});
+exports.app.use('/graphiql', express.static('files'));
 
 
 /***/ }),
-/* 165 */,
 /* 166 */,
-/* 167 */
+/* 167 */,
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const azure_function_express_1 = __webpack_require__(50);
-const _app_1 = __webpack_require__(164);
+const _app_1 = __webpack_require__(165);
 global.__app = _app_1.app;
 global.__app_handler = azure_function_express_1.createHandler(_app_1.app);
 module.exports = global.__app_handler;
