@@ -1,6 +1,6 @@
 import { buildSchema } from 'graphql';
 
-export const schema = buildSchema(`
+export const schemaDoc = `
 type Query {
   test:Human
   hero(id: ID): Human
@@ -19,4 +19,6 @@ enum Episode {
   EMPIRE
   JEDI
 }
-`);
+`;
+
+export const schema = buildSchema(schemaDoc);
