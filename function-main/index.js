@@ -1,2 +1,2 @@
 require('./bundle');
-module.exports = global.__app_export;
+module.exports = global.__app_handler;

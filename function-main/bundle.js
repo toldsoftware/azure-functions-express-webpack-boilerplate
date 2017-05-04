@@ -6403,7 +6403,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express = __webpack_require__(59);
 exports.app = express();
 exports.app.get('/', function (req, res) {
-    res.send('Hello World from Express!');
+    res.send('Hello from Express! V2');
 });
 
 
@@ -6678,8 +6678,9 @@ function validMime(type) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const azure_function_express_1 = __webpack_require__(42);
 const app_1 = __webpack_require__(41);
-global.__app_export = azure_function_express_1.createHandler(app_1.app);
-module.exports = global.__app_export;
+global.__app = app_1.app;
+global.__app_handler = azure_function_express_1.createHandler(app_1.app);
+module.exports = global.__app_handler;
 
 
 /***/ }),
