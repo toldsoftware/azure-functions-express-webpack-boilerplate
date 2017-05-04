@@ -1,5 +1,4 @@
 import * as webpack from 'webpack';
-declare const path: any;
 
 const config: webpack.Configuration = {
     entry: {
