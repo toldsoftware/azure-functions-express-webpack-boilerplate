@@ -36432,30 +36432,30 @@ function getFriends(obj) {
     return obj.friendIds.map(x => getHuman(x));
 }
 function getHuman(id) {
-    if (id === 101) {
+    if (id === '101') {
         return {
-            id: 101,
+            id: '101',
             name: 'Luke',
             appearsIn: ['NEWHOPE'],
             totalCredits: 5,
-            friendIds: [102],
+            friendIds: ['102'],
             friends() { return getFriends(this); }
         };
     }
-    else if (id === 102) {
+    else if (id === '102') {
         return {
-            id: 102,
+            id: '102',
             name: 'Princess',
             appearsIn: ['NEWHOPE'],
             totalCredits: 5,
-            friendIds: [101],
+            friendIds: ['101'],
             friends() { return getFriends(this); }
         };
     }
     return null;
 }
 exports.root = {
-    test: () => getHuman(101),
+    test: () => getHuman('101'),
     hero: (id) => getHuman(id),
     human: (obj, args, context) => getHuman(args.id)
 };

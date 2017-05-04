@@ -4,32 +4,32 @@ function getFriends(obj: Human) {
 }
 
 interface Human {
-    id: number;
+    id: string;
     name: string;
     appearsIn: string[];
     totalCredits: number;
-    friendIds: number[];
+    friendIds: string[];
     friends: ((obj: any, args: any, context: any) => Human[]);
 }
 
-function getHuman(id: number): Human {
+function getHuman(id: string): Human {
 
-    if (id === 101) {
+    if (id === '101') {
         return {
-            id: 101,
+            id: '101',
             name: 'Luke',
             appearsIn: ['NEWHOPE'],
             totalCredits: 5,
-            friendIds: [102],
+            friendIds: ['102'],
             friends() { return getFriends(this); }
         };
-    } else if (id === 102) {
+    } else if (id === '102') {
         return {
-            id: 102,
+            id: '102',
             name: 'Princess',
             appearsIn: ['NEWHOPE'],
             totalCredits: 5,
-            friendIds: [101],
+            friendIds: ['101'],
             friends() { return getFriends(this); }
         };
     }
@@ -38,7 +38,7 @@ function getHuman(id: number): Human {
 }
 
 export const root = {
-    test: () => getHuman(101),
-    hero: (id: number) => getHuman(id),
-    human: (obj: any, args: { id: number }, context: any) => getHuman(args.id)
+    test: () => getHuman('101'),
+    hero: (id: string) => getHuman(id),
+    human: (obj: any, args: { id: string }, context: any) => getHuman(args.id)
 };
