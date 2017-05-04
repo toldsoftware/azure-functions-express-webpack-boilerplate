@@ -5,7 +5,7 @@ function getHuman(id: number) {
             name: 'Luke',
             appearsIn: ['NEWHOPE'],
             totalCredits: 5,
-            friends: [102]
+            friends: [{ id: 102 }]
         };
     } else if (id === 102) {
         return {
@@ -13,7 +13,7 @@ function getHuman(id: number) {
             name: 'Princess',
             appearsIn: ['NEWHOPE'],
             totalCredits: 5,
-            friends: [101]
+            friends: [{ id: 102 }]
         };
     }
 
