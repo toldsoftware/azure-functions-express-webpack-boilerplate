@@ -36429,6 +36429,9 @@ module.exports = [
 
 Object.defineProperty(exports, "__esModule", { value: true });
 function getFriends(obj, args, context) {
+    if (!obj || !obj.friendIds) {
+        return [];
+    }
     return obj.friendIds.map(x => getHuman(x));
 }
 function getHuman(id) {
@@ -36448,6 +36451,7 @@ function getHuman(id) {
             name: 'Princess',
             appearsIn: ['NEWHOPE'],
             totalCredits: 5,
+            friendIds: [101],
             friends: getFriends
         };
     }

@@ -1,5 +1,6 @@
 
 function getFriends(obj: { friendIds: number[] }, args: any, context: any) {
+    if (!obj || !obj.friendIds) { return []; }
     return obj.friendIds.map(x => getHuman(x));
 }
 
@@ -20,6 +21,7 @@ function getHuman(id: number) {
             name: 'Princess',
             appearsIn: ['NEWHOPE'],
             totalCredits: 5,
+            friendIds: [101],
             friends: getFriends
         };
     }
