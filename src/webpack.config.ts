@@ -3,12 +3,12 @@ declare const path: any;
 
 const config: webpack.Configuration = {
     entry: {
-        'express': `${__dirname}/src/express/_index.ts`,
-        'graphql': `${__dirname}/src/graphql/_index.ts`,
+        '../fun-express/bundle.js': `${__dirname}/src/express/_index.ts`,
+        '../fun-graphql/bundle.js': `${__dirname}/src/graphql/_index.ts`,
     },
     output: {
-        path: `${__dirname}/../apps`,
-        filename: '[name].js',
+        path: `${__dirname}/`,
+        filename: '[name]',
         // No Sourcemap
         sourceMapFilename: ''
     },
