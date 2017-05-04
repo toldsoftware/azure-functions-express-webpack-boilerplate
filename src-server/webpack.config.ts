@@ -2,9 +2,9 @@ import * as webpack from 'webpack';
 
 const config: webpack.Configuration = {
     entry: {
-        '../fun-express/bundle.js': `${__dirname}/src/express/_index.ts`,
-        '../fun-graphql/bundle.js': `${__dirname}/src/graphql/_index.ts`,
-        '../fun-static/bundle.js': `${__dirname}/src/static/_index.ts`,
+        '../_deploy/fun-express/bundle.js': `${__dirname}/src/express/_index.ts`,
+        '../_deploy/fun-graphql/bundle.js': `${__dirname}/src/graphql/_index.ts`,
+        '../_deploy/fun-static/bundle.js': `${__dirname}/src/static/_index.ts`,
     },
     output: {
         path: `${__dirname}/`,

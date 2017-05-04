@@ -24,8 +24,8 @@ const enableProduction_sourceMaps = true;
 const enableCodeSplitting = true;
 const enablePreact = true;
 
-const hostPath = __dirname + '/../static/client';
-const buildPath = __dirname + '/../static/client/dist';
+const hostPath = __dirname + '/../_deploy/static/client';
+const buildPath = hostPath + '/dist';
 
 const plugins = [];
 
