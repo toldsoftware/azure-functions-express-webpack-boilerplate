@@ -3,7 +3,7 @@ import * as webpack from 'webpack';
 const config: webpack.Configuration = {
     entry: './src/index-af.ts',
     output: {
-        filename: 'index.js',
+        filename: 'bundle.js',
         path: __dirname + '/../function-main/',
         // No Sourcemap
         sourceMapFilename: ''
