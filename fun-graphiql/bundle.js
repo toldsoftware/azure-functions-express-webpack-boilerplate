@@ -26888,7 +26888,7 @@ exports.app.use((req, res, next) => {
             .replace(/\/(file)?$/, '')
         || 'index.html';
     log('graphiql file handler', 'path', req.path, 'query', req.query, 'filename', filename);
-    res.sendFile(path.join(__dirname, 'files', filename));
+    res.sendFile(path.join(__dirname, '../src/src/graphiql/files', filename));
 });
 
 

@@ -26,5 +26,5 @@ app.use((req, res, next) => {
 
   log('graphiql file handler', 'path', req.path, 'query', req.query, 'filename', filename);
 
-  res.sendFile(path.join(__dirname, 'files', filename));
+  res.sendFile(path.join(__dirname, '../src/src/graphiql/files', filename));
 });
