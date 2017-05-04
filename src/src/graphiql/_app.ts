@@ -17,11 +17,15 @@ app.use((req, res, next) => {
 // Alternative (use /file at end of path)
 app.use((req, res, next) => {
   const log = getLog(req);
-  const filename = req.path
-    .replace(/^graphiql/, '')
-    .replace(/\/(file)?$/, '');
+  const filename = req.query.file
+    || req.path
+      .replace(/^\/graphiql/, '')
+      .replace(/\/(file)?$/, '')
+    || 'index.html'
+    ;
 
   log('graphiql file handler', 'path', req.path, 'query', req.query, 'filename', filename);
 
   res.sendFile(path.join(__dirname, 'files', filename));
+  res.end();
 });
