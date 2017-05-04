@@ -13035,7 +13035,7 @@ const graphql_1 = __webpack_require__(36);
 exports.schema = graphql_1.buildSchema(`
 type Query {
   test:Human
-  hero(episode: Episode): Human
+  hero(id: ID): Human
 }
 
 type Human {

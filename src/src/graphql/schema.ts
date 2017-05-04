@@ -3,7 +3,7 @@ import { buildSchema } from 'graphql';
 export const schema = buildSchema(`
 type Query {
   test:Human
-  hero(episode: Episode): Human
+  hero(id: ID): Human
 }
 
 type Human {
