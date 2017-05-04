@@ -41767,24 +41767,20 @@ module.exports = [
 
 "use strict";
 
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const graphqlTest_1 = __webpack_require__(169);
-const graphqlHandler_1 = __webpack_require__(168);
 const express = __webpack_require__(82);
+const graphqlHTTP = __webpack_require__(171);
+const schema_1 = __webpack_require__(130);
+const root_1 = __webpack_require__(129);
 exports.app = express();
-exports.app.use('/graphql', graphqlHandler_1.graphqlHandler());
-exports.app.get('/testgraphql', (req, res) => __awaiter(this, void 0, void 0, function* () {
-    const result = yield graphqlTest_1.testGraphql(req.context.log);
-    res.json({ result });
-}));
+exports.app.use('/graphql', () => {
+    return graphqlHTTP({
+        schema: schema_1.schema,
+        rootValue: root_1.root,
+        graphiql: true,
+        pretty: true,
+    });
+});
 
 
 /***/ }),
@@ -41803,48 +41799,8 @@ module.exports = global.__app_handler;
 
 
 /***/ }),
-/* 168 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const graphqlHTTP = __webpack_require__(171);
-const schema_1 = __webpack_require__(130);
-const root_1 = __webpack_require__(129);
-function graphqlHandler() {
-    return graphqlHTTP({
-        schema: schema_1.schema,
-        rootValue: root_1.root,
-        graphiql: true,
-        pretty: true,
-    });
-}
-exports.graphqlHandler = graphqlHandler;
-
-
-/***/ }),
-/* 169 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const graphql_1 = __webpack_require__(96);
-const schema_1 = __webpack_require__(130);
-const root_1 = __webpack_require__(129);
-function testGraphql(log) {
-    return new Promise((resolve, reject) => {
-        graphql_1.graphql(schema_1.schema, '{hero(id:"123"){id name appearsIn totalCredits}}', root_1.root).then((response) => {
-            log(JSON.stringify(response));
-            resolve(response);
-        });
-    });
-}
-exports.testGraphql = testGraphql;
-
-
-/***/ }),
+/* 168 */,
+/* 169 */,
 /* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 

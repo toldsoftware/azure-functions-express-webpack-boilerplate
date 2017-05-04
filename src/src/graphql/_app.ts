@@ -1,12 +1,15 @@
-import { testGraphql } from './graphqlTest';
-import { graphqlHandler } from './graphqlHandler';
 import * as express from 'express';
+import * as graphqlHTTP from 'express-graphql';
+import { schema } from './schema';
+import { root } from './root';
 
 export const app = express();
 
-app.use('/graphql', graphqlHandler());
-
-app.get('/testgraphql', async (req, res) => {
-  const result = await testGraphql((req as any).context.log);
-  res.json({ result });
+app.use('/graphql', () => {
+  return graphqlHTTP({
+    schema: schema,
+    rootValue: root,
+    graphiql: true,
+    pretty: true,
+  });
 });
