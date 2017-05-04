@@ -20,7 +20,7 @@ function getHuman(id: string): Human {
         return {
             id: '101',
             name: 'Luke',
-            appearsIn: ['NEWHOPE'],
+            appearsIn: ['NEWHOPE', 'EMPIRE', 'JEDI'],
             totalCredits: 5,
             friendIds: ['102'],
             friends() { return getFriends(this); }
@@ -29,7 +29,7 @@ function getHuman(id: string): Human {
         return {
             id: '102',
             name: 'Princess',
-            appearsIn: ['NEWHOPE'],
+            appearsIn: ['NEWHOPE', 'EMPIRE', 'JEDI'],
             totalCredits: 5,
             friendIds: ['101'],
             friends() { return getFriends(this); }

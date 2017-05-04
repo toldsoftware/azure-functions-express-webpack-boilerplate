@@ -1,4 +1,17 @@
 
+## Demos
+
+- Simple Function (Code In Place)
+- Static Files
+    - Proxy
+        - static/{*file}
+        - =>
+        - fun-static?file={file}
+    - fun-static serves files from static folder
+    - static folder
+- Express Function Endpoint Packaged with Webpack
+- Express-GraphQL Endpoint Packed with Webpack
+
 
 ### Run locally
 

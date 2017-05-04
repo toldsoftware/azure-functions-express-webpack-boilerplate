@@ -4,6 +4,7 @@ const config: webpack.Configuration = {
     entry: {
         '../fun-express/bundle.js': `${__dirname}/src/express/_index.ts`,
         '../fun-graphql/bundle.js': `${__dirname}/src/graphql/_index.ts`,
+        '../fun-static/bundle.js': `${__dirname}/src/static/_index.ts`,
     },
     output: {
         path: `${__dirname}/`,
