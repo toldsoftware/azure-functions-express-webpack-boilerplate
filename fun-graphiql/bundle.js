@@ -26872,7 +26872,7 @@ const express = __webpack_require__(74);
 exports.app = express();
 exports.app.use((req, res, next) => {
     const log = req.context.log;
-    log('graphiql request received', req.query);
+    log('graphiql request received path=', req.path);
     next();
 });
 exports.app.use('/graphiql', express.static('files'));
