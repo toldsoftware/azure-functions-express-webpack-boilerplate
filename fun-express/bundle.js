@@ -95,7 +95,7 @@ module.exports = require("path");
 
 var contentDisposition = __webpack_require__(29);
 var contentType = __webpack_require__(57);
-var deprecate = __webpack_require__(4)('express');
+var deprecate = __webpack_require__(5)('express');
 var flatten = __webpack_require__(11);
 var mime = __webpack_require__(20).mime;
 var basename = __webpack_require__(0).basename;
@@ -382,6 +382,12 @@ function newObject() {
 
 /***/ }),
 /* 4 */
+/***/ (function(module, exports) {
+
+module.exports = require("fs");
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -906,12 +912,6 @@ function DeprecationError(namespace, message, stack) {
   return error
 }
 
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports) {
-
-module.exports = require("fs");
 
 /***/ }),
 /* 6 */
@@ -1755,14 +1755,14 @@ function patchAssignSocket(res, callback) {
 
 var createError = __webpack_require__(54)
 var debug = __webpack_require__(6)('send')
-var deprecate = __webpack_require__(4)('send')
+var deprecate = __webpack_require__(5)('send')
 var destroy = __webpack_require__(72)
 var encodeUrl = __webpack_require__(12)
 var escapeHtml = __webpack_require__(13)
 var etag = __webpack_require__(32)
 var EventEmitter = __webpack_require__(10).EventEmitter
 var fresh = __webpack_require__(38)
-var fs = __webpack_require__(5)
+var fs = __webpack_require__(4)
 var mime = __webpack_require__(99)
 var ms = __webpack_require__(42)
 var onFinished = __webpack_require__(19)
@@ -3767,7 +3767,7 @@ module.exports = etag
  */
 
 var crypto = __webpack_require__(48)
-var Stats = __webpack_require__(5).Stats
+var Stats = __webpack_require__(4).Stats
 
 /**
  * Module variables.
@@ -3958,7 +3958,7 @@ var Layer = __webpack_require__(35);
 var methods = __webpack_require__(18);
 var mixin = __webpack_require__(21);
 var debug = __webpack_require__(6)('express:router');
-var deprecate = __webpack_require__(4)('express');
+var deprecate = __webpack_require__(5)('express');
 var flatten = __webpack_require__(11);
 var parseUrl = __webpack_require__(9);
 var setPrototypeOf = __webpack_require__(14)
@@ -6448,7 +6448,7 @@ exports.createHandler = _createAzureFunctionHandler2.default;
  * @private
  */
 
-var deprecate = __webpack_require__(4)('http-errors')
+var deprecate = __webpack_require__(5)('http-errors')
 var setPrototypeOf = __webpack_require__(14)
 var statuses = __webpack_require__(15)
 var inherits = __webpack_require__(92)
@@ -8212,7 +8212,7 @@ function createWritableStdioStream (fd) {
       break;
 
     case 'FILE':
-      var fs = __webpack_require__(5);
+      var fs = __webpack_require__(4);
       stream = new fs.SyncWriteStream(fd, { autoClose: false });
       stream._type = 'fs';
       break;
@@ -8471,7 +8471,7 @@ function eventListenerCount(emitter, type) {
  * @private
  */
 
-var ReadStream = __webpack_require__(5).ReadStream
+var ReadStream = __webpack_require__(4).ReadStream
 var Stream = __webpack_require__(23)
 
 /**
@@ -8698,7 +8698,7 @@ var http = __webpack_require__(16);
 var compileETag = __webpack_require__(3).compileETag;
 var compileQueryParser = __webpack_require__(3).compileQueryParser;
 var compileTrust = __webpack_require__(3).compileTrust;
-var deprecate = __webpack_require__(4)('express');
+var deprecate = __webpack_require__(5)('express');
 var flatten = __webpack_require__(11);
 var merge = __webpack_require__(21);
 var resolve = __webpack_require__(0).resolve;
@@ -9507,7 +9507,7 @@ exports.init = function(app){
  */
 
 var accepts = __webpack_require__(56);
-var deprecate = __webpack_require__(4)('express');
+var deprecate = __webpack_require__(5)('express');
 var isIP = __webpack_require__(22).isIP;
 var typeis = __webpack_require__(111);
 var http = __webpack_require__(16);
@@ -10030,7 +10030,7 @@ function defineGetter(obj, name, getter) {
  */
 
 var contentDisposition = __webpack_require__(29);
-var deprecate = __webpack_require__(4)('express');
+var deprecate = __webpack_require__(5)('express');
 var encodeUrl = __webpack_require__(12);
 var escapeHtml = __webpack_require__(13);
 var http = __webpack_require__(16);
@@ -11110,7 +11110,7 @@ function stringify(value, replacer, spaces) {
 
 var debug = __webpack_require__(6)('express:view');
 var path = __webpack_require__(0);
-var fs = __webpack_require__(5);
+var fs = __webpack_require__(4);
 var utils = __webpack_require__(3);
 
 /**
@@ -11971,7 +11971,7 @@ function createWritableStdioStream (fd) {
       break;
 
     case 'FILE':
-      var fs = __webpack_require__(5);
+      var fs = __webpack_require__(4);
       stream = new fs.SyncWriteStream(fd, { autoClose: false });
       stream._type = 'fs';
       break;
@@ -21881,7 +21881,7 @@ module.exports = __webpack_require__(97)
 /***/ (function(module, exports, __webpack_require__) {
 
 var path = __webpack_require__(0);
-var fs = __webpack_require__(5);
+var fs = __webpack_require__(4);
 
 function Mime() {
   // Map of extension -> mime type

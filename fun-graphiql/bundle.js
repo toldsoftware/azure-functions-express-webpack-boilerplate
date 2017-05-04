@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 168);
+/******/ 	return __webpack_require__(__webpack_require__.s = 169);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -95,7 +95,7 @@ module.exports = require("path");
 
 var contentDisposition = __webpack_require__(29);
 var contentType = __webpack_require__(57);
-var deprecate = __webpack_require__(4)('express');
+var deprecate = __webpack_require__(5)('express');
 var flatten = __webpack_require__(11);
 var mime = __webpack_require__(20).mime;
 var basename = __webpack_require__(0).basename;
@@ -382,6 +382,12 @@ function newObject() {
 
 /***/ }),
 /* 4 */
+/***/ (function(module, exports) {
+
+module.exports = require("fs");
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -906,12 +912,6 @@ function DeprecationError(namespace, message, stack) {
   return error
 }
 
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports) {
-
-module.exports = require("fs");
 
 /***/ }),
 /* 6 */
@@ -1755,14 +1755,14 @@ function patchAssignSocket(res, callback) {
 
 var createError = __webpack_require__(54)
 var debug = __webpack_require__(6)('send')
-var deprecate = __webpack_require__(4)('send')
+var deprecate = __webpack_require__(5)('send')
 var destroy = __webpack_require__(72)
 var encodeUrl = __webpack_require__(12)
 var escapeHtml = __webpack_require__(13)
 var etag = __webpack_require__(32)
 var EventEmitter = __webpack_require__(10).EventEmitter
 var fresh = __webpack_require__(38)
-var fs = __webpack_require__(5)
+var fs = __webpack_require__(4)
 var mime = __webpack_require__(99)
 var ms = __webpack_require__(42)
 var onFinished = __webpack_require__(19)
@@ -3767,7 +3767,7 @@ module.exports = etag
  */
 
 var crypto = __webpack_require__(48)
-var Stats = __webpack_require__(5).Stats
+var Stats = __webpack_require__(4).Stats
 
 /**
  * Module variables.
@@ -3958,7 +3958,7 @@ var Layer = __webpack_require__(35);
 var methods = __webpack_require__(18);
 var mixin = __webpack_require__(21);
 var debug = __webpack_require__(6)('express:router');
-var deprecate = __webpack_require__(4)('express');
+var deprecate = __webpack_require__(5)('express');
 var flatten = __webpack_require__(11);
 var parseUrl = __webpack_require__(9);
 var setPrototypeOf = __webpack_require__(14)
@@ -6448,7 +6448,7 @@ exports.createHandler = _createAzureFunctionHandler2.default;
  * @private
  */
 
-var deprecate = __webpack_require__(4)('http-errors')
+var deprecate = __webpack_require__(5)('http-errors')
 var setPrototypeOf = __webpack_require__(14)
 var statuses = __webpack_require__(15)
 var inherits = __webpack_require__(92)
@@ -8212,7 +8212,7 @@ function createWritableStdioStream (fd) {
       break;
 
     case 'FILE':
-      var fs = __webpack_require__(5);
+      var fs = __webpack_require__(4);
       stream = new fs.SyncWriteStream(fd, { autoClose: false });
       stream._type = 'fs';
       break;
@@ -8471,7 +8471,7 @@ function eventListenerCount(emitter, type) {
  * @private
  */
 
-var ReadStream = __webpack_require__(5).ReadStream
+var ReadStream = __webpack_require__(4).ReadStream
 var Stream = __webpack_require__(23)
 
 /**
@@ -8698,7 +8698,7 @@ var http = __webpack_require__(16);
 var compileETag = __webpack_require__(3).compileETag;
 var compileQueryParser = __webpack_require__(3).compileQueryParser;
 var compileTrust = __webpack_require__(3).compileTrust;
-var deprecate = __webpack_require__(4)('express');
+var deprecate = __webpack_require__(5)('express');
 var flatten = __webpack_require__(11);
 var merge = __webpack_require__(21);
 var resolve = __webpack_require__(0).resolve;
@@ -9507,7 +9507,7 @@ exports.init = function(app){
  */
 
 var accepts = __webpack_require__(56);
-var deprecate = __webpack_require__(4)('express');
+var deprecate = __webpack_require__(5)('express');
 var isIP = __webpack_require__(22).isIP;
 var typeis = __webpack_require__(111);
 var http = __webpack_require__(16);
@@ -10030,7 +10030,7 @@ function defineGetter(obj, name, getter) {
  */
 
 var contentDisposition = __webpack_require__(29);
-var deprecate = __webpack_require__(4)('express');
+var deprecate = __webpack_require__(5)('express');
 var encodeUrl = __webpack_require__(12);
 var escapeHtml = __webpack_require__(13);
 var http = __webpack_require__(16);
@@ -11110,7 +11110,7 @@ function stringify(value, replacer, spaces) {
 
 var debug = __webpack_require__(6)('express:view');
 var path = __webpack_require__(0);
-var fs = __webpack_require__(5);
+var fs = __webpack_require__(4);
 var utils = __webpack_require__(3);
 
 /**
@@ -11971,7 +11971,7 @@ function createWritableStdioStream (fd) {
       break;
 
     case 'FILE':
-      var fs = __webpack_require__(5);
+      var fs = __webpack_require__(4);
       stream = new fs.SyncWriteStream(fd, { autoClose: false });
       stream._type = 'fs';
       break;
@@ -21881,7 +21881,7 @@ module.exports = __webpack_require__(97)
 /***/ (function(module, exports, __webpack_require__) {
 
 var path = __webpack_require__(0);
-var fs = __webpack_require__(5);
+var fs = __webpack_require__(4);
 
 function Mime() {
   // Map of extension -> mime type
@@ -26870,8 +26870,8 @@ module.exports = function(module) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = __webpack_require__(74);
 const path = __webpack_require__(0);
-const fs = __webpack_require__(5);
-const getLog_1 = __webpack_require__(215);
+const fs = __webpack_require__(4);
+const getLog_1 = __webpack_require__(168);
 exports.app = express();
 exports.app.use((req, res, next) => {
     const log = getLog_1.getLog(req);
@@ -26895,12 +26895,18 @@ exports.app.use((req, res, next) => {
     log('graphiql file handler', 'path', req.path, 'query', req.query, 'filename', filename, 'path', p);
     // Doesn't work with azure function express
     // res.sendFile(p);
+    // if (!fs.exists(p)) {
+    //   log('ERROR: File Does Not Exist');
+    //   res.statusCode = 404;
+    //   res.end('File Not Found: ' + p);
+    //   return;
+    // }
     fs.readFile(p, (err, data) => {
-        log('readFile path=' + p);
+        log('readFile path=', p);
         if (err != null) {
-            log('ERROR: ' + err);
+            log('ERROR: ', err, p);
             res.statusCode = 404;
-            res.end('File Not Found: ' + p, 'test/plain');
+            res.end('File Not Found: ' + p);
             return;
         }
         let body = data;
@@ -26945,66 +26951,6 @@ exports.app.use((req, res, next) => {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const azure_function_express_1 = __webpack_require__(50);
-const _app_1 = __webpack_require__(165);
-global.__app = _app_1.app;
-global.__app_handler = azure_function_express_1.createHandler(_app_1.app);
-module.exports = global.__app_handler;
-
-
-/***/ }),
-/* 169 */,
-/* 170 */,
-/* 171 */,
-/* 172 */,
-/* 173 */,
-/* 174 */,
-/* 175 */,
-/* 176 */,
-/* 177 */,
-/* 178 */,
-/* 179 */,
-/* 180 */,
-/* 181 */,
-/* 182 */,
-/* 183 */,
-/* 184 */,
-/* 185 */,
-/* 186 */,
-/* 187 */,
-/* 188 */,
-/* 189 */,
-/* 190 */,
-/* 191 */,
-/* 192 */,
-/* 193 */,
-/* 194 */,
-/* 195 */,
-/* 196 */,
-/* 197 */,
-/* 198 */,
-/* 199 */,
-/* 200 */,
-/* 201 */,
-/* 202 */,
-/* 203 */,
-/* 204 */,
-/* 205 */,
-/* 206 */,
-/* 207 */,
-/* 208 */,
-/* 209 */,
-/* 210 */,
-/* 211 */,
-/* 212 */,
-/* 213 */,
-/* 214 */,
-/* 215 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
 function getLog(req) {
     if (console.log) {
         return console.log.bind(console);
@@ -27012,6 +26958,20 @@ function getLog(req) {
     return req.context.log;
 }
 exports.getLog = getLog;
+
+
+/***/ }),
+/* 169 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const azure_function_express_1 = __webpack_require__(50);
+const _app_1 = __webpack_require__(165);
+global.__app = _app_1.app;
+global.__app_handler = azure_function_express_1.createHandler(_app_1.app);
+module.exports = global.__app_handler;
 
 
 /***/ })
