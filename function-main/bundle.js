@@ -13013,7 +13013,7 @@ exports.root = {
             totalCredits: 5
         };
     },
-    hero(episode) {
+    hero(id) {
         return {
             id: 123,
             name: 'Luke',
@@ -13034,21 +13034,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const graphql_1 = __webpack_require__(36);
 exports.schema = graphql_1.buildSchema(`
 type Query {
-  test:Character
-  hero(episode: Episode): Character
+  test:Human
+  hero(episode: Episode): Human
 }
 
-interface Character {
+type Human {
   id: ID!
   name: String!
-  friends: [Character]
-  appearsIn: [Episode]!
-}
-
-type Human implements Character {
-  id: ID!
-  name: String!
-  friends: [Character]
+  friends: [Human]
   appearsIn: [Episode]!
   totalCredits: Int
 }

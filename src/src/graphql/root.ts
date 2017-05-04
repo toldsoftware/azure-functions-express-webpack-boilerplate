@@ -7,7 +7,7 @@ export const root = {
             totalCredits: 5
         };
     },
-    hero(episode: string) {
+    hero(id: number) {
         return {
             id: 123,
             name: 'Luke',

@@ -2,21 +2,14 @@ import { buildSchema } from 'graphql';
 
 export const schema = buildSchema(`
 type Query {
-  test:Character
-  hero(episode: Episode): Character
+  test:Human
+  hero(episode: Episode): Human
 }
 
-interface Character {
+type Human {
   id: ID!
   name: String!
-  friends: [Character]
-  appearsIn: [Episode]!
-}
-
-type Human implements Character {
-  id: ID!
-  name: String!
-  friends: [Character]
+  friends: [Human]
   appearsIn: [Episode]!
   totalCredits: Int
 }
