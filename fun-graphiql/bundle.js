@@ -26869,13 +26869,20 @@ module.exports = function(module) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = __webpack_require__(74);
+const path = __webpack_require__(0);
 exports.app = express();
 exports.app.use((req, res, next) => {
     const log = req.context.log;
     log('graphiql request received path=', req.path);
     next();
 });
-exports.app.use('/graphiql', express.static('files'));
+// Doesn't work because dot extension problem in azure functions
+// app.use('/graphiql', express.static('files'));
+// Alternative (use /file at end of path)
+exports.app.use('/graphql', (req, res, next) => {
+    const filename = req.path.replace(/\/(file)?$/, '');
+    res.sendFile(path.join(__dirname, 'files', filename));
+});
 
 
 /***/ }),
