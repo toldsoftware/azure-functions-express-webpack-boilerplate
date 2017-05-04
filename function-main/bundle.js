@@ -22267,7 +22267,7 @@ const schema_1 = __webpack_require__(57);
 const root_1 = __webpack_require__(56);
 function testGraphql(log) {
     return new Promise((resolve, reject) => {
-        graphql_1.graphql(schema_1.schema, '{ hero(episode:"NEWHOPE"){name}}', root_1.root).then((response) => {
+        graphql_1.graphql(schema_1.schema, '{hero(id:"123"){id name appearsIn totalCredits}}', root_1.root).then((response) => {
             log(JSON.stringify(response));
             resolve(response);
         });
