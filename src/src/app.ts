@@ -2,9 +2,29 @@ import * as express from 'express';
 
 export const app = express();
 
-app.get('/api/:foo/:bar', (req, res) => {
+
+app.get('/:a', (req, res) => {
   res.json({
-    foo  : req.params.foo,
-    bar  : req.params.bar
+    pattern: '/:a',
+    a  : req.params.a,
+    b  : req.params.b
+  });
+});
+
+
+app.get('/api/:a', (req, res) => {
+  res.json({
+    pattern: '/api/:a',
+    a  : req.params.a,
+    b  : req.params.b
+  });
+});
+
+
+app.get('/api/:a/:b', (req, res) => {
+  res.json({
+    pattern: '/api/:a/:b',
+    a  : req.params.a,
+    b  : req.params.b
   });
 });
