@@ -4,7 +4,7 @@ import * as express from 'express';
 
 export const app = express();
 
-app.use('/api/graphql', graphqlHandler);
+app.use('/api/graphql', graphqlHandler());
 
 app.get('/api/testgraphql', async (req, res) => {
   const result = await testGraphql((req as any).context.log);

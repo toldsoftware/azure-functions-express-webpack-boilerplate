@@ -22125,7 +22125,7 @@ const graphqlTest_1 = __webpack_require__(115);
 const graphqlHandler_1 = __webpack_require__(114);
 const express = __webpack_require__(134);
 exports.app = express();
-exports.app.use('/api/graphql', graphqlHandler_1.graphqlHandler);
+exports.app.use('/api/graphql', graphqlHandler_1.graphqlHandler());
 exports.app.get('/api/testgraphql', (req, res) => __awaiter(this, void 0, void 0, function* () {
     const result = yield graphqlTest_1.testGraphql(req.context.log);
     res.json({ result });

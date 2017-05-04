@@ -11,6 +11,7 @@ export const schema = buildSchema(`
 var root = { hello: () => 'Hello world!' };
 
 export function graphqlHandler() {
+
   return graphqlHTTP({
     schema: schema,
     rootValue: root,
