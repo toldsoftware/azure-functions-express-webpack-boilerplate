@@ -25,18 +25,11 @@ app.use((req, res, next) => {
 
   let p = path.join(dir, filename);
 
-  if (!fs.exists(p)) {
+  if (fs.statSync(p).isDirectory) {
     p = path.join(p, 'index.html');
   }
 
   log('graphiql file handler', 'path', req.path, 'query', req.query, 'filename', filename, 'path', p);
-
-  if (!fs.exists(p)) {
-    log('ERROR: File Does Not Exist');
-    res.statusCode = 404;
-    res.end('File Not Found: ' + p);
-    return;
-  }
 
   fs.readFile(p, (err, data) => {
     log('readFile path=', p);
