@@ -1,5 +1,5 @@
 import { createHandler } from 'azure-function-express';
-import { app } from './app';
+import { app } from './_app';
 
 // Binds Express App to Azure Functions Node Context
 declare const global: any;

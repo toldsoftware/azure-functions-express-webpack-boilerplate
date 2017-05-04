@@ -1,10 +1,14 @@
 import * as webpack from 'webpack';
+declare const path: any;
 
 const config: webpack.Configuration = {
-    entry: './src/index-af.ts',
+    entry: {
+        'express': `${__dirname}/src/express/_index.ts`,
+        'graphql': `${__dirname}/src/graphql/_index.ts`,
+    },
     output: {
-        filename: 'bundle.js',
-        path: __dirname + '/../function-main/',
+        path: `${__dirname}/../apps`,
+        filename: '[name].js',
         // No Sourcemap
         sourceMapFilename: ''
     },

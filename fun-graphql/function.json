@@ -3,7 +3,8 @@
       "authLevel": "anonymous",
       "type": "httpTrigger",
       "direction": "in",
-      "name": "req"
+      "name": "req",
+      "route": "graphql/{*catchall}"
     },
     {
       "type": "http",
