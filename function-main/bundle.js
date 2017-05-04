@@ -13005,6 +13005,14 @@ function validMime(type) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.root = {
+    test() {
+        return {
+            id: 123,
+            name: 'Luke',
+            appearsIn: ['NEWHOPE'],
+            totalCredits: 5
+        };
+    },
     hero(episode) {
         return {
             id: 123,
@@ -13026,6 +13034,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const graphql_1 = __webpack_require__(36);
 exports.schema = graphql_1.buildSchema(`
 type Query {
+  test:Character
   hero(episode: Episode): Character
 }
 

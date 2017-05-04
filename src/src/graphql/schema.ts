@@ -2,6 +2,7 @@ import { buildSchema } from 'graphql';
 
 export const schema = buildSchema(`
 type Query {
+  test:Character
   hero(episode: Episode): Character
 }
 
