@@ -25,7 +25,7 @@ app.use((req, res, next) => {
 
   let p = path.join(dir, filename);
 
-  if (fs.statSync(p).isDirectory) {
+  if (fs.statSync(p).isDirectory()) {
     p = path.join(p, 'index.html');
   }
 
