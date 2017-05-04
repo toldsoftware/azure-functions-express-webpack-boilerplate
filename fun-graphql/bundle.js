@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 167);
+/******/ 	return __webpack_require__(__webpack_require__.s = 166);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -86,7 +86,7 @@ Object.defineProperty(exports, 'GraphQLError', {
   }
 });
 
-var _syntaxError = __webpack_require__(176);
+var _syntaxError = __webpack_require__(175);
 
 Object.defineProperty(exports, 'syntaxError', {
   enumerable: true,
@@ -95,7 +95,7 @@ Object.defineProperty(exports, 'syntaxError', {
   }
 });
 
-var _locatedError = __webpack_require__(175);
+var _locatedError = __webpack_require__(174);
 
 Object.defineProperty(exports, 'locatedError', {
   enumerable: true,
@@ -104,7 +104,7 @@ Object.defineProperty(exports, 'locatedError', {
   }
 });
 
-var _formatError = __webpack_require__(174);
+var _formatError = __webpack_require__(173);
 
 Object.defineProperty(exports, 'formatError', {
   enumerable: true,
@@ -983,7 +983,7 @@ var DIRECTIVE_DEFINITION = exports.DIRECTIVE_DEFINITION = 'DirectiveDefinition';
  */
 
 var contentDisposition = __webpack_require__(35);
-var contentType = __webpack_require__(62);
+var contentType = __webpack_require__(63);
 var deprecate = __webpack_require__(6)('express');
 var flatten = __webpack_require__(12);
 var mime = __webpack_require__(29).mime;
@@ -991,7 +991,7 @@ var basename = __webpack_require__(2).basename;
 var etag = __webpack_require__(38);
 var proxyaddr = __webpack_require__(52);
 var qs = __webpack_require__(54);
-var querystring = __webpack_require__(68);
+var querystring = __webpack_require__(69);
 
 /**
  * Return strong ETag for `body`.
@@ -1839,9 +1839,9 @@ module.exports = require("fs");
  */
 
 if (typeof process !== 'undefined' && process.type === 'renderer') {
-  module.exports = __webpack_require__(75);
-} else {
   module.exports = __webpack_require__(76);
+} else {
+  module.exports = __webpack_require__(77);
 }
 
 
@@ -3000,7 +3000,7 @@ var _invariant = __webpack_require__(5);
 
 var _invariant2 = _interopRequireDefault(_invariant);
 
-var _typeComparators = __webpack_require__(65);
+var _typeComparators = __webpack_require__(66);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -3884,7 +3884,7 @@ module.exports.isFinished = isFinished
  * @private
  */
 
-var first = __webpack_require__(81)
+var first = __webpack_require__(82)
 
 /**
  * Variables.
@@ -4082,7 +4082,7 @@ function patchAssignSocket(res, callback) {
 var createError = __webpack_require__(49)
 var debug = __webpack_require__(8)('send')
 var deprecate = __webpack_require__(6)('send')
-var destroy = __webpack_require__(80)
+var destroy = __webpack_require__(81)
 var encodeUrl = __webpack_require__(13)
 var escapeHtml = __webpack_require__(14)
 var etag = __webpack_require__(38)
@@ -5245,11 +5245,11 @@ var _events = __webpack_require__(10);
 
 var _events2 = _interopRequireDefault(_events);
 
-var _OutgoingMessage = __webpack_require__(70);
+var _OutgoingMessage = __webpack_require__(71);
 
 var _OutgoingMessage2 = _interopRequireDefault(_OutgoingMessage);
 
-var _IncomingMessage = __webpack_require__(69);
+var _IncomingMessage = __webpack_require__(70);
 
 var _IncomingMessage2 = _interopRequireDefault(_IncomingMessage);
 
@@ -6044,7 +6044,7 @@ var EventEmitter = __webpack_require__(10).EventEmitter
  */
 
 lazyProperty(module.exports, 'bufferConcat', function bufferConcat() {
-  return Buffer.concat || __webpack_require__(77)
+  return Buffer.concat || __webpack_require__(78)
 })
 
 lazyProperty(module.exports, 'callSiteToString', function callSiteToString() {
@@ -6068,11 +6068,11 @@ lazyProperty(module.exports, 'callSiteToString', function callSiteToString() {
   Error.prepareStackTrace = prep
   Error.stackTraceLimit = limit
 
-  return stack[0].toString ? toString : __webpack_require__(78)
+  return stack[0].toString ? toString : __webpack_require__(79)
 })
 
 lazyProperty(module.exports, 'eventListenerCount', function eventListenerCount() {
-  return EventEmitter.listenerCount || __webpack_require__(79)
+  return EventEmitter.listenerCount || __webpack_require__(80)
 })
 
 /**
@@ -7397,7 +7397,7 @@ exports.coerce = coerce;
 exports.disable = disable;
 exports.enable = enable;
 exports.enabled = enabled;
-exports.humanize = __webpack_require__(94);
+exports.humanize = __webpack_require__(95);
 
 /**
  * The currently active debug mode names, and names to skip.
@@ -9044,7 +9044,7 @@ module.exports.compile = compile;
  * @private
  */
 
-var forwarded = __webpack_require__(95);
+var forwarded = __webpack_require__(96);
 var ipaddr = __webpack_require__(109);
 
 /**
@@ -9774,7 +9774,7 @@ module.exports = require("tty");
 exports.__esModule = true;
 exports.createHandler = exports.createAzureFunctionHandler = exports.ExpressAdapter = undefined;
 
-var _createAzureFunctionHandler = __webpack_require__(71);
+var _createAzureFunctionHandler = __webpack_require__(72);
 
 var _createAzureFunctionHandler2 = _interopRequireDefault(_createAzureFunctionHandler);
 
@@ -10031,6 +10031,30 @@ function validMime(type) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+let _log = console && console.log && console.log.bind(console);
+function registerLog(req) {
+    var r = req;
+    if (r && r.context && r.context.log) {
+        _log = r.context.log;
+    }
+}
+exports.registerLog = registerLog;
+function getLog() {
+    return _log;
+}
+exports.getLog = getLog;
+exports.log = function () {
+    _log.apply(null, arguments);
+};
+
+
+/***/ }),
+/* 63 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /*!
  * content-type
  * Copyright(c) 2015 Douglas Christopher Wilson
@@ -10250,7 +10274,7 @@ function ContentType(type) {
 
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11276,7 +11300,7 @@ function many(lexer, openKind, parseFn, closeKind) {
 }
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11401,7 +11425,7 @@ function isValidLiteralValue(type, valueNode) {
 }
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11531,7 +11555,7 @@ function doTypesOverlap(schema, typeA, typeB) {
 }
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports) {
 
 /**
@@ -12193,7 +12217,7 @@ exports.forAwaitEach = forAwaitEach
 
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12269,13 +12293,13 @@ function unpipe(stream) {
 
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports) {
 
 module.exports = require("querystring");
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12363,7 +12387,7 @@ exports.default = IncomingMessage;
 module.exports = exports["default"];
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12371,7 +12395,7 @@ module.exports = exports["default"];
 
 exports.__esModule = true;
 
-var _statusCodes = __webpack_require__(72);
+var _statusCodes = __webpack_require__(73);
 
 var _statusCodes2 = _interopRequireDefault(_statusCodes);
 
@@ -12505,7 +12529,7 @@ exports.default = OutgoingMessage;
 module.exports = exports["default"];
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12533,7 +12557,7 @@ function createAzureFunctionHandler(requestListener) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12607,7 +12631,7 @@ exports.default = {
 module.exports = exports["default"];
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -12664,7 +12688,7 @@ function sha1(str){
 
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12866,7 +12890,7 @@ function tryDecode(str, decode) {
 
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -13054,7 +13078,7 @@ function localstorage() {
 
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -13301,7 +13325,7 @@ exports.enable(load());
 
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13343,7 +13367,7 @@ function bufferConcat(bufs) {
 
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13453,7 +13477,7 @@ function getConstructorName(obj) {
 
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13482,7 +13506,7 @@ function eventListenerCount(emitter, type) {
 
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13564,7 +13588,7 @@ function onOpenClose() {
 
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13666,7 +13690,7 @@ function listener(event, done) {
 
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13680,11 +13704,11 @@ function listener(event, done) {
 
 
 
-module.exports = __webpack_require__(85);
+module.exports = __webpack_require__(86);
 
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports) {
 
 function webpackEmptyContext(req) {
@@ -13693,10 +13717,10 @@ function webpackEmptyContext(req) {
 webpackEmptyContext.keys = function() { return []; };
 webpackEmptyContext.resolve = webpackEmptyContext;
 module.exports = webpackEmptyContext;
-webpackEmptyContext.id = 83;
+webpackEmptyContext.id = 84;
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13715,13 +13739,13 @@ webpackEmptyContext.id = 83;
  * @private
  */
 
-var finalhandler = __webpack_require__(90);
+var finalhandler = __webpack_require__(91);
 var Router = __webpack_require__(40);
 var methods = __webpack_require__(27);
-var middleware = __webpack_require__(86);
+var middleware = __webpack_require__(87);
 var query = __webpack_require__(39);
 var debug = __webpack_require__(8)('express:application');
-var View = __webpack_require__(89);
+var View = __webpack_require__(90);
 var http = __webpack_require__(19);
 var compileETag = __webpack_require__(4).compileETag;
 var compileQueryParser = __webpack_require__(4).compileQueryParser;
@@ -14347,7 +14371,7 @@ function tryRender(view, options, callback) {
 
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14367,11 +14391,11 @@ function tryRender(view, options, callback) {
 
 var EventEmitter = __webpack_require__(10).EventEmitter;
 var mixin = __webpack_require__(111);
-var proto = __webpack_require__(84);
+var proto = __webpack_require__(85);
 var Route = __webpack_require__(42);
 var Router = __webpack_require__(40);
-var req = __webpack_require__(87);
-var res = __webpack_require__(88);
+var req = __webpack_require__(88);
+var res = __webpack_require__(89);
 
 /**
  * Expose `createApplication()`.
@@ -14465,7 +14489,7 @@ exports.static = __webpack_require__(124);
 
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14515,7 +14539,7 @@ exports.init = function(app){
 
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15039,7 +15063,7 @@ function defineGetter(obj, name, getter) {
 
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15067,11 +15091,11 @@ var onFinished = __webpack_require__(28);
 var path = __webpack_require__(2);
 var statuses = __webpack_require__(18)
 var merge = __webpack_require__(30);
-var sign = __webpack_require__(73).sign;
+var sign = __webpack_require__(74).sign;
 var normalizeType = __webpack_require__(4).normalizeType;
 var normalizeTypes = __webpack_require__(4).normalizeTypes;
 var setCharset = __webpack_require__(4).setCharset;
-var cookie = __webpack_require__(74);
+var cookie = __webpack_require__(75);
 var send = __webpack_require__(29);
 var extname = path.extname;
 var mime = send.mime;
@@ -16117,7 +16141,7 @@ function stringify(value, replacer, spaces) {
 
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16299,7 +16323,7 @@ function tryStat(path) {
 
 
 /***/ }),
-/* 90 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16316,13 +16340,13 @@ function tryStat(path) {
  * @private
  */
 
-var debug = __webpack_require__(92)('finalhandler')
+var debug = __webpack_require__(93)('finalhandler')
 var encodeUrl = __webpack_require__(13)
 var escapeHtml = __webpack_require__(14)
 var onFinished = __webpack_require__(28)
 var parseUrl = __webpack_require__(9)
 var statuses = __webpack_require__(18)
-var unpipe = __webpack_require__(67)
+var unpipe = __webpack_require__(68)
 
 /**
  * Module variables.
@@ -16606,7 +16630,7 @@ function setHeaders (res, headers) {
 
 
 /***/ }),
-/* 91 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -16797,7 +16821,7 @@ function localstorage() {
 
 
 /***/ }),
-/* 92 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -16806,14 +16830,14 @@ function localstorage() {
  */
 
 if (typeof process !== 'undefined' && process.type === 'renderer') {
-  module.exports = __webpack_require__(91);
+  module.exports = __webpack_require__(92);
 } else {
-  module.exports = __webpack_require__(93);
+  module.exports = __webpack_require__(94);
 }
 
 
 /***/ }),
-/* 93 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -17060,7 +17084,7 @@ exports.enable(load());
 
 
 /***/ }),
-/* 94 */
+/* 95 */
 /***/ (function(module, exports) {
 
 /**
@@ -17215,7 +17239,7 @@ function plural(ms, n, name) {
 
 
 /***/ }),
-/* 95 */
+/* 96 */
 /***/ (function(module, exports) {
 
 /*!
@@ -17254,746 +17278,6 @@ function forwarded(req) {
   return addrs
 }
 
-
-/***/ }),
-/* 96 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _graphql = __webpack_require__(178);
-
-Object.defineProperty(exports, 'graphql', {
-  enumerable: true,
-  get: function get() {
-    return _graphql.graphql;
-  }
-});
-
-var _type = __webpack_require__(180);
-
-Object.defineProperty(exports, 'GraphQLSchema', {
-  enumerable: true,
-  get: function get() {
-    return _type.GraphQLSchema;
-  }
-});
-Object.defineProperty(exports, 'GraphQLScalarType', {
-  enumerable: true,
-  get: function get() {
-    return _type.GraphQLScalarType;
-  }
-});
-Object.defineProperty(exports, 'GraphQLObjectType', {
-  enumerable: true,
-  get: function get() {
-    return _type.GraphQLObjectType;
-  }
-});
-Object.defineProperty(exports, 'GraphQLInterfaceType', {
-  enumerable: true,
-  get: function get() {
-    return _type.GraphQLInterfaceType;
-  }
-});
-Object.defineProperty(exports, 'GraphQLUnionType', {
-  enumerable: true,
-  get: function get() {
-    return _type.GraphQLUnionType;
-  }
-});
-Object.defineProperty(exports, 'GraphQLEnumType', {
-  enumerable: true,
-  get: function get() {
-    return _type.GraphQLEnumType;
-  }
-});
-Object.defineProperty(exports, 'GraphQLInputObjectType', {
-  enumerable: true,
-  get: function get() {
-    return _type.GraphQLInputObjectType;
-  }
-});
-Object.defineProperty(exports, 'GraphQLList', {
-  enumerable: true,
-  get: function get() {
-    return _type.GraphQLList;
-  }
-});
-Object.defineProperty(exports, 'GraphQLNonNull', {
-  enumerable: true,
-  get: function get() {
-    return _type.GraphQLNonNull;
-  }
-});
-Object.defineProperty(exports, 'GraphQLDirective', {
-  enumerable: true,
-  get: function get() {
-    return _type.GraphQLDirective;
-  }
-});
-Object.defineProperty(exports, 'TypeKind', {
-  enumerable: true,
-  get: function get() {
-    return _type.TypeKind;
-  }
-});
-Object.defineProperty(exports, 'DirectiveLocation', {
-  enumerable: true,
-  get: function get() {
-    return _type.DirectiveLocation;
-  }
-});
-Object.defineProperty(exports, 'GraphQLInt', {
-  enumerable: true,
-  get: function get() {
-    return _type.GraphQLInt;
-  }
-});
-Object.defineProperty(exports, 'GraphQLFloat', {
-  enumerable: true,
-  get: function get() {
-    return _type.GraphQLFloat;
-  }
-});
-Object.defineProperty(exports, 'GraphQLString', {
-  enumerable: true,
-  get: function get() {
-    return _type.GraphQLString;
-  }
-});
-Object.defineProperty(exports, 'GraphQLBoolean', {
-  enumerable: true,
-  get: function get() {
-    return _type.GraphQLBoolean;
-  }
-});
-Object.defineProperty(exports, 'GraphQLID', {
-  enumerable: true,
-  get: function get() {
-    return _type.GraphQLID;
-  }
-});
-Object.defineProperty(exports, 'specifiedDirectives', {
-  enumerable: true,
-  get: function get() {
-    return _type.specifiedDirectives;
-  }
-});
-Object.defineProperty(exports, 'GraphQLIncludeDirective', {
-  enumerable: true,
-  get: function get() {
-    return _type.GraphQLIncludeDirective;
-  }
-});
-Object.defineProperty(exports, 'GraphQLSkipDirective', {
-  enumerable: true,
-  get: function get() {
-    return _type.GraphQLSkipDirective;
-  }
-});
-Object.defineProperty(exports, 'GraphQLDeprecatedDirective', {
-  enumerable: true,
-  get: function get() {
-    return _type.GraphQLDeprecatedDirective;
-  }
-});
-Object.defineProperty(exports, 'DEFAULT_DEPRECATION_REASON', {
-  enumerable: true,
-  get: function get() {
-    return _type.DEFAULT_DEPRECATION_REASON;
-  }
-});
-Object.defineProperty(exports, 'SchemaMetaFieldDef', {
-  enumerable: true,
-  get: function get() {
-    return _type.SchemaMetaFieldDef;
-  }
-});
-Object.defineProperty(exports, 'TypeMetaFieldDef', {
-  enumerable: true,
-  get: function get() {
-    return _type.TypeMetaFieldDef;
-  }
-});
-Object.defineProperty(exports, 'TypeNameMetaFieldDef', {
-  enumerable: true,
-  get: function get() {
-    return _type.TypeNameMetaFieldDef;
-  }
-});
-Object.defineProperty(exports, '__Schema', {
-  enumerable: true,
-  get: function get() {
-    return _type.__Schema;
-  }
-});
-Object.defineProperty(exports, '__Directive', {
-  enumerable: true,
-  get: function get() {
-    return _type.__Directive;
-  }
-});
-Object.defineProperty(exports, '__DirectiveLocation', {
-  enumerable: true,
-  get: function get() {
-    return _type.__DirectiveLocation;
-  }
-});
-Object.defineProperty(exports, '__Type', {
-  enumerable: true,
-  get: function get() {
-    return _type.__Type;
-  }
-});
-Object.defineProperty(exports, '__Field', {
-  enumerable: true,
-  get: function get() {
-    return _type.__Field;
-  }
-});
-Object.defineProperty(exports, '__InputValue', {
-  enumerable: true,
-  get: function get() {
-    return _type.__InputValue;
-  }
-});
-Object.defineProperty(exports, '__EnumValue', {
-  enumerable: true,
-  get: function get() {
-    return _type.__EnumValue;
-  }
-});
-Object.defineProperty(exports, '__TypeKind', {
-  enumerable: true,
-  get: function get() {
-    return _type.__TypeKind;
-  }
-});
-Object.defineProperty(exports, 'isType', {
-  enumerable: true,
-  get: function get() {
-    return _type.isType;
-  }
-});
-Object.defineProperty(exports, 'isInputType', {
-  enumerable: true,
-  get: function get() {
-    return _type.isInputType;
-  }
-});
-Object.defineProperty(exports, 'isOutputType', {
-  enumerable: true,
-  get: function get() {
-    return _type.isOutputType;
-  }
-});
-Object.defineProperty(exports, 'isLeafType', {
-  enumerable: true,
-  get: function get() {
-    return _type.isLeafType;
-  }
-});
-Object.defineProperty(exports, 'isCompositeType', {
-  enumerable: true,
-  get: function get() {
-    return _type.isCompositeType;
-  }
-});
-Object.defineProperty(exports, 'isAbstractType', {
-  enumerable: true,
-  get: function get() {
-    return _type.isAbstractType;
-  }
-});
-Object.defineProperty(exports, 'isNamedType', {
-  enumerable: true,
-  get: function get() {
-    return _type.isNamedType;
-  }
-});
-Object.defineProperty(exports, 'assertType', {
-  enumerable: true,
-  get: function get() {
-    return _type.assertType;
-  }
-});
-Object.defineProperty(exports, 'assertInputType', {
-  enumerable: true,
-  get: function get() {
-    return _type.assertInputType;
-  }
-});
-Object.defineProperty(exports, 'assertOutputType', {
-  enumerable: true,
-  get: function get() {
-    return _type.assertOutputType;
-  }
-});
-Object.defineProperty(exports, 'assertLeafType', {
-  enumerable: true,
-  get: function get() {
-    return _type.assertLeafType;
-  }
-});
-Object.defineProperty(exports, 'assertCompositeType', {
-  enumerable: true,
-  get: function get() {
-    return _type.assertCompositeType;
-  }
-});
-Object.defineProperty(exports, 'assertAbstractType', {
-  enumerable: true,
-  get: function get() {
-    return _type.assertAbstractType;
-  }
-});
-Object.defineProperty(exports, 'assertNamedType', {
-  enumerable: true,
-  get: function get() {
-    return _type.assertNamedType;
-  }
-});
-Object.defineProperty(exports, 'getNullableType', {
-  enumerable: true,
-  get: function get() {
-    return _type.getNullableType;
-  }
-});
-Object.defineProperty(exports, 'getNamedType', {
-  enumerable: true,
-  get: function get() {
-    return _type.getNamedType;
-  }
-});
-
-var _language = __webpack_require__(179);
-
-Object.defineProperty(exports, 'Source', {
-  enumerable: true,
-  get: function get() {
-    return _language.Source;
-  }
-});
-Object.defineProperty(exports, 'getLocation', {
-  enumerable: true,
-  get: function get() {
-    return _language.getLocation;
-  }
-});
-Object.defineProperty(exports, 'parse', {
-  enumerable: true,
-  get: function get() {
-    return _language.parse;
-  }
-});
-Object.defineProperty(exports, 'parseValue', {
-  enumerable: true,
-  get: function get() {
-    return _language.parseValue;
-  }
-});
-Object.defineProperty(exports, 'parseType', {
-  enumerable: true,
-  get: function get() {
-    return _language.parseType;
-  }
-});
-Object.defineProperty(exports, 'print', {
-  enumerable: true,
-  get: function get() {
-    return _language.print;
-  }
-});
-Object.defineProperty(exports, 'visit', {
-  enumerable: true,
-  get: function get() {
-    return _language.visit;
-  }
-});
-Object.defineProperty(exports, 'visitInParallel', {
-  enumerable: true,
-  get: function get() {
-    return _language.visitInParallel;
-  }
-});
-Object.defineProperty(exports, 'visitWithTypeInfo', {
-  enumerable: true,
-  get: function get() {
-    return _language.visitWithTypeInfo;
-  }
-});
-Object.defineProperty(exports, 'getVisitFn', {
-  enumerable: true,
-  get: function get() {
-    return _language.getVisitFn;
-  }
-});
-Object.defineProperty(exports, 'Kind', {
-  enumerable: true,
-  get: function get() {
-    return _language.Kind;
-  }
-});
-Object.defineProperty(exports, 'TokenKind', {
-  enumerable: true,
-  get: function get() {
-    return _language.TokenKind;
-  }
-});
-Object.defineProperty(exports, 'BREAK', {
-  enumerable: true,
-  get: function get() {
-    return _language.BREAK;
-  }
-});
-
-var _execution = __webpack_require__(177);
-
-Object.defineProperty(exports, 'execute', {
-  enumerable: true,
-  get: function get() {
-    return _execution.execute;
-  }
-});
-Object.defineProperty(exports, 'defaultFieldResolver', {
-  enumerable: true,
-  get: function get() {
-    return _execution.defaultFieldResolver;
-  }
-});
-Object.defineProperty(exports, 'responsePathAsArray', {
-  enumerable: true,
-  get: function get() {
-    return _execution.responsePathAsArray;
-  }
-});
-
-var _validation = __webpack_require__(191);
-
-Object.defineProperty(exports, 'validate', {
-  enumerable: true,
-  get: function get() {
-    return _validation.validate;
-  }
-});
-Object.defineProperty(exports, 'ValidationContext', {
-  enumerable: true,
-  get: function get() {
-    return _validation.ValidationContext;
-  }
-});
-Object.defineProperty(exports, 'specifiedRules', {
-  enumerable: true,
-  get: function get() {
-    return _validation.specifiedRules;
-  }
-});
-Object.defineProperty(exports, 'ArgumentsOfCorrectTypeRule', {
-  enumerable: true,
-  get: function get() {
-    return _validation.ArgumentsOfCorrectTypeRule;
-  }
-});
-Object.defineProperty(exports, 'DefaultValuesOfCorrectTypeRule', {
-  enumerable: true,
-  get: function get() {
-    return _validation.DefaultValuesOfCorrectTypeRule;
-  }
-});
-Object.defineProperty(exports, 'FieldsOnCorrectTypeRule', {
-  enumerable: true,
-  get: function get() {
-    return _validation.FieldsOnCorrectTypeRule;
-  }
-});
-Object.defineProperty(exports, 'FragmentsOnCompositeTypesRule', {
-  enumerable: true,
-  get: function get() {
-    return _validation.FragmentsOnCompositeTypesRule;
-  }
-});
-Object.defineProperty(exports, 'KnownArgumentNamesRule', {
-  enumerable: true,
-  get: function get() {
-    return _validation.KnownArgumentNamesRule;
-  }
-});
-Object.defineProperty(exports, 'KnownDirectivesRule', {
-  enumerable: true,
-  get: function get() {
-    return _validation.KnownDirectivesRule;
-  }
-});
-Object.defineProperty(exports, 'KnownFragmentNamesRule', {
-  enumerable: true,
-  get: function get() {
-    return _validation.KnownFragmentNamesRule;
-  }
-});
-Object.defineProperty(exports, 'KnownTypeNamesRule', {
-  enumerable: true,
-  get: function get() {
-    return _validation.KnownTypeNamesRule;
-  }
-});
-Object.defineProperty(exports, 'LoneAnonymousOperationRule', {
-  enumerable: true,
-  get: function get() {
-    return _validation.LoneAnonymousOperationRule;
-  }
-});
-Object.defineProperty(exports, 'NoFragmentCyclesRule', {
-  enumerable: true,
-  get: function get() {
-    return _validation.NoFragmentCyclesRule;
-  }
-});
-Object.defineProperty(exports, 'NoUndefinedVariablesRule', {
-  enumerable: true,
-  get: function get() {
-    return _validation.NoUndefinedVariablesRule;
-  }
-});
-Object.defineProperty(exports, 'NoUnusedFragmentsRule', {
-  enumerable: true,
-  get: function get() {
-    return _validation.NoUnusedFragmentsRule;
-  }
-});
-Object.defineProperty(exports, 'NoUnusedVariablesRule', {
-  enumerable: true,
-  get: function get() {
-    return _validation.NoUnusedVariablesRule;
-  }
-});
-Object.defineProperty(exports, 'OverlappingFieldsCanBeMergedRule', {
-  enumerable: true,
-  get: function get() {
-    return _validation.OverlappingFieldsCanBeMergedRule;
-  }
-});
-Object.defineProperty(exports, 'PossibleFragmentSpreadsRule', {
-  enumerable: true,
-  get: function get() {
-    return _validation.PossibleFragmentSpreadsRule;
-  }
-});
-Object.defineProperty(exports, 'ProvidedNonNullArgumentsRule', {
-  enumerable: true,
-  get: function get() {
-    return _validation.ProvidedNonNullArgumentsRule;
-  }
-});
-Object.defineProperty(exports, 'ScalarLeafsRule', {
-  enumerable: true,
-  get: function get() {
-    return _validation.ScalarLeafsRule;
-  }
-});
-Object.defineProperty(exports, 'UniqueArgumentNamesRule', {
-  enumerable: true,
-  get: function get() {
-    return _validation.UniqueArgumentNamesRule;
-  }
-});
-Object.defineProperty(exports, 'UniqueDirectivesPerLocationRule', {
-  enumerable: true,
-  get: function get() {
-    return _validation.UniqueDirectivesPerLocationRule;
-  }
-});
-Object.defineProperty(exports, 'UniqueFragmentNamesRule', {
-  enumerable: true,
-  get: function get() {
-    return _validation.UniqueFragmentNamesRule;
-  }
-});
-Object.defineProperty(exports, 'UniqueInputFieldNamesRule', {
-  enumerable: true,
-  get: function get() {
-    return _validation.UniqueInputFieldNamesRule;
-  }
-});
-Object.defineProperty(exports, 'UniqueOperationNamesRule', {
-  enumerable: true,
-  get: function get() {
-    return _validation.UniqueOperationNamesRule;
-  }
-});
-Object.defineProperty(exports, 'UniqueVariableNamesRule', {
-  enumerable: true,
-  get: function get() {
-    return _validation.UniqueVariableNamesRule;
-  }
-});
-Object.defineProperty(exports, 'VariablesAreInputTypesRule', {
-  enumerable: true,
-  get: function get() {
-    return _validation.VariablesAreInputTypesRule;
-  }
-});
-Object.defineProperty(exports, 'VariablesInAllowedPositionRule', {
-  enumerable: true,
-  get: function get() {
-    return _validation.VariablesInAllowedPositionRule;
-  }
-});
-
-var _error = __webpack_require__(0);
-
-Object.defineProperty(exports, 'GraphQLError', {
-  enumerable: true,
-  get: function get() {
-    return _error.GraphQLError;
-  }
-});
-Object.defineProperty(exports, 'formatError', {
-  enumerable: true,
-  get: function get() {
-    return _error.formatError;
-  }
-});
-
-var _utilities = __webpack_require__(187);
-
-Object.defineProperty(exports, 'introspectionQuery', {
-  enumerable: true,
-  get: function get() {
-    return _utilities.introspectionQuery;
-  }
-});
-Object.defineProperty(exports, 'getOperationAST', {
-  enumerable: true,
-  get: function get() {
-    return _utilities.getOperationAST;
-  }
-});
-Object.defineProperty(exports, 'buildClientSchema', {
-  enumerable: true,
-  get: function get() {
-    return _utilities.buildClientSchema;
-  }
-});
-Object.defineProperty(exports, 'buildASTSchema', {
-  enumerable: true,
-  get: function get() {
-    return _utilities.buildASTSchema;
-  }
-});
-Object.defineProperty(exports, 'buildSchema', {
-  enumerable: true,
-  get: function get() {
-    return _utilities.buildSchema;
-  }
-});
-Object.defineProperty(exports, 'extendSchema', {
-  enumerable: true,
-  get: function get() {
-    return _utilities.extendSchema;
-  }
-});
-Object.defineProperty(exports, 'printSchema', {
-  enumerable: true,
-  get: function get() {
-    return _utilities.printSchema;
-  }
-});
-Object.defineProperty(exports, 'printType', {
-  enumerable: true,
-  get: function get() {
-    return _utilities.printType;
-  }
-});
-Object.defineProperty(exports, 'typeFromAST', {
-  enumerable: true,
-  get: function get() {
-    return _utilities.typeFromAST;
-  }
-});
-Object.defineProperty(exports, 'valueFromAST', {
-  enumerable: true,
-  get: function get() {
-    return _utilities.valueFromAST;
-  }
-});
-Object.defineProperty(exports, 'astFromValue', {
-  enumerable: true,
-  get: function get() {
-    return _utilities.astFromValue;
-  }
-});
-Object.defineProperty(exports, 'TypeInfo', {
-  enumerable: true,
-  get: function get() {
-    return _utilities.TypeInfo;
-  }
-});
-Object.defineProperty(exports, 'isValidJSValue', {
-  enumerable: true,
-  get: function get() {
-    return _utilities.isValidJSValue;
-  }
-});
-Object.defineProperty(exports, 'isValidLiteralValue', {
-  enumerable: true,
-  get: function get() {
-    return _utilities.isValidLiteralValue;
-  }
-});
-Object.defineProperty(exports, 'concatAST', {
-  enumerable: true,
-  get: function get() {
-    return _utilities.concatAST;
-  }
-});
-Object.defineProperty(exports, 'separateOperations', {
-  enumerable: true,
-  get: function get() {
-    return _utilities.separateOperations;
-  }
-});
-Object.defineProperty(exports, 'isEqualType', {
-  enumerable: true,
-  get: function get() {
-    return _utilities.isEqualType;
-  }
-});
-Object.defineProperty(exports, 'isTypeSubTypeOf', {
-  enumerable: true,
-  get: function get() {
-    return _utilities.isTypeSubTypeOf;
-  }
-});
-Object.defineProperty(exports, 'doTypesOverlap', {
-  enumerable: true,
-  get: function get() {
-    return _utilities.doTypesOverlap;
-  }
-});
-Object.defineProperty(exports, 'assertValidName', {
-  enumerable: true,
-  get: function get() {
-    return _utilities.assertValidName;
-  }
-});
-Object.defineProperty(exports, 'findBreakingChanges', {
-  enumerable: true,
-  get: function get() {
-    return _utilities.findBreakingChanges;
-  }
-});
-Object.defineProperty(exports, 'findDeprecatedUsages', {
-  enumerable: true,
-  get: function get() {
-    return _utilities.findDeprecatedUsages;
-  }
-});
 
 /***/ }),
 /* 97 */
@@ -19067,7 +18351,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.astFromValue = astFromValue;
 
-var _iterall = __webpack_require__(66);
+var _iterall = __webpack_require__(67);
 
 var _invariant = __webpack_require__(5);
 
@@ -36427,76 +35711,6 @@ module.exports = function(module) {
 
 "use strict";
 
-Object.defineProperty(exports, "__esModule", { value: true });
-function getFriends(obj) {
-    return obj.friendIds.map(x => getHuman(x));
-}
-function getHuman(id) {
-    if (id === '101') {
-        return {
-            id: '101',
-            name: 'Luke',
-            appearsIn: ['NEWHOPE'],
-            totalCredits: 5,
-            friendIds: ['102'],
-            friends() { return getFriends(this); }
-        };
-    }
-    else if (id === '102') {
-        return {
-            id: '102',
-            name: 'Princess',
-            appearsIn: ['NEWHOPE'],
-            totalCredits: 5,
-            friendIds: ['101'],
-            friends() { return getFriends(this); }
-        };
-    }
-    return null;
-}
-exports.root = {
-    test: () => getHuman('101'),
-    hero: (id) => getHuman(id),
-    human: (obj, args, context) => getHuman(args.id)
-};
-
-
-/***/ }),
-/* 130 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const graphql_1 = __webpack_require__(96);
-exports.schema = graphql_1.buildSchema(`
-type Query {
-  test:Human
-  hero(id: ID): Human
-}
-
-type Human {
-  id: ID!
-  name: String!
-  friends: [Human]
-  appearsIn: [Episode]!
-  totalCredits: Int
-}
-
-enum Episode {
-  NEWHOPE
-  EMPIRE
-  JEDI
-}
-`);
-
-
-/***/ }),
-/* 131 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -36505,7 +35719,7 @@ exports.defaultFieldResolver = undefined;
 exports.execute = execute;
 exports.responsePathAsArray = responsePathAsArray;
 
-var _iterall = __webpack_require__(66);
+var _iterall = __webpack_require__(67);
 
 var _error = __webpack_require__(0);
 
@@ -36527,7 +35741,7 @@ var _kinds = __webpack_require__(3);
 
 var Kind = _interopRequireWildcard(_kinds);
 
-var _values = __webpack_require__(132);
+var _values = __webpack_require__(130);
 
 var _definition = __webpack_require__(1);
 
@@ -37303,7 +36517,7 @@ function getFieldDef(schema, parentType, fieldName) {
 }
 
 /***/ }),
-/* 132 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37315,7 +36529,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.getVariableValues = getVariableValues;
 exports.getArgumentValues = getArgumentValues;
 
-var _iterall = __webpack_require__(66);
+var _iterall = __webpack_require__(67);
 
 var _error = __webpack_require__(0);
 
@@ -37339,9 +36553,9 @@ var _typeFromAST = __webpack_require__(16);
 
 var _valueFromAST = __webpack_require__(48);
 
-var _isValidJSValue = __webpack_require__(134);
+var _isValidJSValue = __webpack_require__(133);
 
-var _isValidLiteralValue = __webpack_require__(64);
+var _isValidLiteralValue = __webpack_require__(65);
 
 var _kinds = __webpack_require__(3);
 
@@ -37544,7 +36758,747 @@ function coerceValue(type, value) {
 }
 
 /***/ }),
-/* 133 */
+/* 131 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _graphql = __webpack_require__(177);
+
+Object.defineProperty(exports, 'graphql', {
+  enumerable: true,
+  get: function get() {
+    return _graphql.graphql;
+  }
+});
+
+var _type = __webpack_require__(179);
+
+Object.defineProperty(exports, 'GraphQLSchema', {
+  enumerable: true,
+  get: function get() {
+    return _type.GraphQLSchema;
+  }
+});
+Object.defineProperty(exports, 'GraphQLScalarType', {
+  enumerable: true,
+  get: function get() {
+    return _type.GraphQLScalarType;
+  }
+});
+Object.defineProperty(exports, 'GraphQLObjectType', {
+  enumerable: true,
+  get: function get() {
+    return _type.GraphQLObjectType;
+  }
+});
+Object.defineProperty(exports, 'GraphQLInterfaceType', {
+  enumerable: true,
+  get: function get() {
+    return _type.GraphQLInterfaceType;
+  }
+});
+Object.defineProperty(exports, 'GraphQLUnionType', {
+  enumerable: true,
+  get: function get() {
+    return _type.GraphQLUnionType;
+  }
+});
+Object.defineProperty(exports, 'GraphQLEnumType', {
+  enumerable: true,
+  get: function get() {
+    return _type.GraphQLEnumType;
+  }
+});
+Object.defineProperty(exports, 'GraphQLInputObjectType', {
+  enumerable: true,
+  get: function get() {
+    return _type.GraphQLInputObjectType;
+  }
+});
+Object.defineProperty(exports, 'GraphQLList', {
+  enumerable: true,
+  get: function get() {
+    return _type.GraphQLList;
+  }
+});
+Object.defineProperty(exports, 'GraphQLNonNull', {
+  enumerable: true,
+  get: function get() {
+    return _type.GraphQLNonNull;
+  }
+});
+Object.defineProperty(exports, 'GraphQLDirective', {
+  enumerable: true,
+  get: function get() {
+    return _type.GraphQLDirective;
+  }
+});
+Object.defineProperty(exports, 'TypeKind', {
+  enumerable: true,
+  get: function get() {
+    return _type.TypeKind;
+  }
+});
+Object.defineProperty(exports, 'DirectiveLocation', {
+  enumerable: true,
+  get: function get() {
+    return _type.DirectiveLocation;
+  }
+});
+Object.defineProperty(exports, 'GraphQLInt', {
+  enumerable: true,
+  get: function get() {
+    return _type.GraphQLInt;
+  }
+});
+Object.defineProperty(exports, 'GraphQLFloat', {
+  enumerable: true,
+  get: function get() {
+    return _type.GraphQLFloat;
+  }
+});
+Object.defineProperty(exports, 'GraphQLString', {
+  enumerable: true,
+  get: function get() {
+    return _type.GraphQLString;
+  }
+});
+Object.defineProperty(exports, 'GraphQLBoolean', {
+  enumerable: true,
+  get: function get() {
+    return _type.GraphQLBoolean;
+  }
+});
+Object.defineProperty(exports, 'GraphQLID', {
+  enumerable: true,
+  get: function get() {
+    return _type.GraphQLID;
+  }
+});
+Object.defineProperty(exports, 'specifiedDirectives', {
+  enumerable: true,
+  get: function get() {
+    return _type.specifiedDirectives;
+  }
+});
+Object.defineProperty(exports, 'GraphQLIncludeDirective', {
+  enumerable: true,
+  get: function get() {
+    return _type.GraphQLIncludeDirective;
+  }
+});
+Object.defineProperty(exports, 'GraphQLSkipDirective', {
+  enumerable: true,
+  get: function get() {
+    return _type.GraphQLSkipDirective;
+  }
+});
+Object.defineProperty(exports, 'GraphQLDeprecatedDirective', {
+  enumerable: true,
+  get: function get() {
+    return _type.GraphQLDeprecatedDirective;
+  }
+});
+Object.defineProperty(exports, 'DEFAULT_DEPRECATION_REASON', {
+  enumerable: true,
+  get: function get() {
+    return _type.DEFAULT_DEPRECATION_REASON;
+  }
+});
+Object.defineProperty(exports, 'SchemaMetaFieldDef', {
+  enumerable: true,
+  get: function get() {
+    return _type.SchemaMetaFieldDef;
+  }
+});
+Object.defineProperty(exports, 'TypeMetaFieldDef', {
+  enumerable: true,
+  get: function get() {
+    return _type.TypeMetaFieldDef;
+  }
+});
+Object.defineProperty(exports, 'TypeNameMetaFieldDef', {
+  enumerable: true,
+  get: function get() {
+    return _type.TypeNameMetaFieldDef;
+  }
+});
+Object.defineProperty(exports, '__Schema', {
+  enumerable: true,
+  get: function get() {
+    return _type.__Schema;
+  }
+});
+Object.defineProperty(exports, '__Directive', {
+  enumerable: true,
+  get: function get() {
+    return _type.__Directive;
+  }
+});
+Object.defineProperty(exports, '__DirectiveLocation', {
+  enumerable: true,
+  get: function get() {
+    return _type.__DirectiveLocation;
+  }
+});
+Object.defineProperty(exports, '__Type', {
+  enumerable: true,
+  get: function get() {
+    return _type.__Type;
+  }
+});
+Object.defineProperty(exports, '__Field', {
+  enumerable: true,
+  get: function get() {
+    return _type.__Field;
+  }
+});
+Object.defineProperty(exports, '__InputValue', {
+  enumerable: true,
+  get: function get() {
+    return _type.__InputValue;
+  }
+});
+Object.defineProperty(exports, '__EnumValue', {
+  enumerable: true,
+  get: function get() {
+    return _type.__EnumValue;
+  }
+});
+Object.defineProperty(exports, '__TypeKind', {
+  enumerable: true,
+  get: function get() {
+    return _type.__TypeKind;
+  }
+});
+Object.defineProperty(exports, 'isType', {
+  enumerable: true,
+  get: function get() {
+    return _type.isType;
+  }
+});
+Object.defineProperty(exports, 'isInputType', {
+  enumerable: true,
+  get: function get() {
+    return _type.isInputType;
+  }
+});
+Object.defineProperty(exports, 'isOutputType', {
+  enumerable: true,
+  get: function get() {
+    return _type.isOutputType;
+  }
+});
+Object.defineProperty(exports, 'isLeafType', {
+  enumerable: true,
+  get: function get() {
+    return _type.isLeafType;
+  }
+});
+Object.defineProperty(exports, 'isCompositeType', {
+  enumerable: true,
+  get: function get() {
+    return _type.isCompositeType;
+  }
+});
+Object.defineProperty(exports, 'isAbstractType', {
+  enumerable: true,
+  get: function get() {
+    return _type.isAbstractType;
+  }
+});
+Object.defineProperty(exports, 'isNamedType', {
+  enumerable: true,
+  get: function get() {
+    return _type.isNamedType;
+  }
+});
+Object.defineProperty(exports, 'assertType', {
+  enumerable: true,
+  get: function get() {
+    return _type.assertType;
+  }
+});
+Object.defineProperty(exports, 'assertInputType', {
+  enumerable: true,
+  get: function get() {
+    return _type.assertInputType;
+  }
+});
+Object.defineProperty(exports, 'assertOutputType', {
+  enumerable: true,
+  get: function get() {
+    return _type.assertOutputType;
+  }
+});
+Object.defineProperty(exports, 'assertLeafType', {
+  enumerable: true,
+  get: function get() {
+    return _type.assertLeafType;
+  }
+});
+Object.defineProperty(exports, 'assertCompositeType', {
+  enumerable: true,
+  get: function get() {
+    return _type.assertCompositeType;
+  }
+});
+Object.defineProperty(exports, 'assertAbstractType', {
+  enumerable: true,
+  get: function get() {
+    return _type.assertAbstractType;
+  }
+});
+Object.defineProperty(exports, 'assertNamedType', {
+  enumerable: true,
+  get: function get() {
+    return _type.assertNamedType;
+  }
+});
+Object.defineProperty(exports, 'getNullableType', {
+  enumerable: true,
+  get: function get() {
+    return _type.getNullableType;
+  }
+});
+Object.defineProperty(exports, 'getNamedType', {
+  enumerable: true,
+  get: function get() {
+    return _type.getNamedType;
+  }
+});
+
+var _language = __webpack_require__(178);
+
+Object.defineProperty(exports, 'Source', {
+  enumerable: true,
+  get: function get() {
+    return _language.Source;
+  }
+});
+Object.defineProperty(exports, 'getLocation', {
+  enumerable: true,
+  get: function get() {
+    return _language.getLocation;
+  }
+});
+Object.defineProperty(exports, 'parse', {
+  enumerable: true,
+  get: function get() {
+    return _language.parse;
+  }
+});
+Object.defineProperty(exports, 'parseValue', {
+  enumerable: true,
+  get: function get() {
+    return _language.parseValue;
+  }
+});
+Object.defineProperty(exports, 'parseType', {
+  enumerable: true,
+  get: function get() {
+    return _language.parseType;
+  }
+});
+Object.defineProperty(exports, 'print', {
+  enumerable: true,
+  get: function get() {
+    return _language.print;
+  }
+});
+Object.defineProperty(exports, 'visit', {
+  enumerable: true,
+  get: function get() {
+    return _language.visit;
+  }
+});
+Object.defineProperty(exports, 'visitInParallel', {
+  enumerable: true,
+  get: function get() {
+    return _language.visitInParallel;
+  }
+});
+Object.defineProperty(exports, 'visitWithTypeInfo', {
+  enumerable: true,
+  get: function get() {
+    return _language.visitWithTypeInfo;
+  }
+});
+Object.defineProperty(exports, 'getVisitFn', {
+  enumerable: true,
+  get: function get() {
+    return _language.getVisitFn;
+  }
+});
+Object.defineProperty(exports, 'Kind', {
+  enumerable: true,
+  get: function get() {
+    return _language.Kind;
+  }
+});
+Object.defineProperty(exports, 'TokenKind', {
+  enumerable: true,
+  get: function get() {
+    return _language.TokenKind;
+  }
+});
+Object.defineProperty(exports, 'BREAK', {
+  enumerable: true,
+  get: function get() {
+    return _language.BREAK;
+  }
+});
+
+var _execution = __webpack_require__(176);
+
+Object.defineProperty(exports, 'execute', {
+  enumerable: true,
+  get: function get() {
+    return _execution.execute;
+  }
+});
+Object.defineProperty(exports, 'defaultFieldResolver', {
+  enumerable: true,
+  get: function get() {
+    return _execution.defaultFieldResolver;
+  }
+});
+Object.defineProperty(exports, 'responsePathAsArray', {
+  enumerable: true,
+  get: function get() {
+    return _execution.responsePathAsArray;
+  }
+});
+
+var _validation = __webpack_require__(190);
+
+Object.defineProperty(exports, 'validate', {
+  enumerable: true,
+  get: function get() {
+    return _validation.validate;
+  }
+});
+Object.defineProperty(exports, 'ValidationContext', {
+  enumerable: true,
+  get: function get() {
+    return _validation.ValidationContext;
+  }
+});
+Object.defineProperty(exports, 'specifiedRules', {
+  enumerable: true,
+  get: function get() {
+    return _validation.specifiedRules;
+  }
+});
+Object.defineProperty(exports, 'ArgumentsOfCorrectTypeRule', {
+  enumerable: true,
+  get: function get() {
+    return _validation.ArgumentsOfCorrectTypeRule;
+  }
+});
+Object.defineProperty(exports, 'DefaultValuesOfCorrectTypeRule', {
+  enumerable: true,
+  get: function get() {
+    return _validation.DefaultValuesOfCorrectTypeRule;
+  }
+});
+Object.defineProperty(exports, 'FieldsOnCorrectTypeRule', {
+  enumerable: true,
+  get: function get() {
+    return _validation.FieldsOnCorrectTypeRule;
+  }
+});
+Object.defineProperty(exports, 'FragmentsOnCompositeTypesRule', {
+  enumerable: true,
+  get: function get() {
+    return _validation.FragmentsOnCompositeTypesRule;
+  }
+});
+Object.defineProperty(exports, 'KnownArgumentNamesRule', {
+  enumerable: true,
+  get: function get() {
+    return _validation.KnownArgumentNamesRule;
+  }
+});
+Object.defineProperty(exports, 'KnownDirectivesRule', {
+  enumerable: true,
+  get: function get() {
+    return _validation.KnownDirectivesRule;
+  }
+});
+Object.defineProperty(exports, 'KnownFragmentNamesRule', {
+  enumerable: true,
+  get: function get() {
+    return _validation.KnownFragmentNamesRule;
+  }
+});
+Object.defineProperty(exports, 'KnownTypeNamesRule', {
+  enumerable: true,
+  get: function get() {
+    return _validation.KnownTypeNamesRule;
+  }
+});
+Object.defineProperty(exports, 'LoneAnonymousOperationRule', {
+  enumerable: true,
+  get: function get() {
+    return _validation.LoneAnonymousOperationRule;
+  }
+});
+Object.defineProperty(exports, 'NoFragmentCyclesRule', {
+  enumerable: true,
+  get: function get() {
+    return _validation.NoFragmentCyclesRule;
+  }
+});
+Object.defineProperty(exports, 'NoUndefinedVariablesRule', {
+  enumerable: true,
+  get: function get() {
+    return _validation.NoUndefinedVariablesRule;
+  }
+});
+Object.defineProperty(exports, 'NoUnusedFragmentsRule', {
+  enumerable: true,
+  get: function get() {
+    return _validation.NoUnusedFragmentsRule;
+  }
+});
+Object.defineProperty(exports, 'NoUnusedVariablesRule', {
+  enumerable: true,
+  get: function get() {
+    return _validation.NoUnusedVariablesRule;
+  }
+});
+Object.defineProperty(exports, 'OverlappingFieldsCanBeMergedRule', {
+  enumerable: true,
+  get: function get() {
+    return _validation.OverlappingFieldsCanBeMergedRule;
+  }
+});
+Object.defineProperty(exports, 'PossibleFragmentSpreadsRule', {
+  enumerable: true,
+  get: function get() {
+    return _validation.PossibleFragmentSpreadsRule;
+  }
+});
+Object.defineProperty(exports, 'ProvidedNonNullArgumentsRule', {
+  enumerable: true,
+  get: function get() {
+    return _validation.ProvidedNonNullArgumentsRule;
+  }
+});
+Object.defineProperty(exports, 'ScalarLeafsRule', {
+  enumerable: true,
+  get: function get() {
+    return _validation.ScalarLeafsRule;
+  }
+});
+Object.defineProperty(exports, 'UniqueArgumentNamesRule', {
+  enumerable: true,
+  get: function get() {
+    return _validation.UniqueArgumentNamesRule;
+  }
+});
+Object.defineProperty(exports, 'UniqueDirectivesPerLocationRule', {
+  enumerable: true,
+  get: function get() {
+    return _validation.UniqueDirectivesPerLocationRule;
+  }
+});
+Object.defineProperty(exports, 'UniqueFragmentNamesRule', {
+  enumerable: true,
+  get: function get() {
+    return _validation.UniqueFragmentNamesRule;
+  }
+});
+Object.defineProperty(exports, 'UniqueInputFieldNamesRule', {
+  enumerable: true,
+  get: function get() {
+    return _validation.UniqueInputFieldNamesRule;
+  }
+});
+Object.defineProperty(exports, 'UniqueOperationNamesRule', {
+  enumerable: true,
+  get: function get() {
+    return _validation.UniqueOperationNamesRule;
+  }
+});
+Object.defineProperty(exports, 'UniqueVariableNamesRule', {
+  enumerable: true,
+  get: function get() {
+    return _validation.UniqueVariableNamesRule;
+  }
+});
+Object.defineProperty(exports, 'VariablesAreInputTypesRule', {
+  enumerable: true,
+  get: function get() {
+    return _validation.VariablesAreInputTypesRule;
+  }
+});
+Object.defineProperty(exports, 'VariablesInAllowedPositionRule', {
+  enumerable: true,
+  get: function get() {
+    return _validation.VariablesInAllowedPositionRule;
+  }
+});
+
+var _error = __webpack_require__(0);
+
+Object.defineProperty(exports, 'GraphQLError', {
+  enumerable: true,
+  get: function get() {
+    return _error.GraphQLError;
+  }
+});
+Object.defineProperty(exports, 'formatError', {
+  enumerable: true,
+  get: function get() {
+    return _error.formatError;
+  }
+});
+
+var _utilities = __webpack_require__(186);
+
+Object.defineProperty(exports, 'introspectionQuery', {
+  enumerable: true,
+  get: function get() {
+    return _utilities.introspectionQuery;
+  }
+});
+Object.defineProperty(exports, 'getOperationAST', {
+  enumerable: true,
+  get: function get() {
+    return _utilities.getOperationAST;
+  }
+});
+Object.defineProperty(exports, 'buildClientSchema', {
+  enumerable: true,
+  get: function get() {
+    return _utilities.buildClientSchema;
+  }
+});
+Object.defineProperty(exports, 'buildASTSchema', {
+  enumerable: true,
+  get: function get() {
+    return _utilities.buildASTSchema;
+  }
+});
+Object.defineProperty(exports, 'buildSchema', {
+  enumerable: true,
+  get: function get() {
+    return _utilities.buildSchema;
+  }
+});
+Object.defineProperty(exports, 'extendSchema', {
+  enumerable: true,
+  get: function get() {
+    return _utilities.extendSchema;
+  }
+});
+Object.defineProperty(exports, 'printSchema', {
+  enumerable: true,
+  get: function get() {
+    return _utilities.printSchema;
+  }
+});
+Object.defineProperty(exports, 'printType', {
+  enumerable: true,
+  get: function get() {
+    return _utilities.printType;
+  }
+});
+Object.defineProperty(exports, 'typeFromAST', {
+  enumerable: true,
+  get: function get() {
+    return _utilities.typeFromAST;
+  }
+});
+Object.defineProperty(exports, 'valueFromAST', {
+  enumerable: true,
+  get: function get() {
+    return _utilities.valueFromAST;
+  }
+});
+Object.defineProperty(exports, 'astFromValue', {
+  enumerable: true,
+  get: function get() {
+    return _utilities.astFromValue;
+  }
+});
+Object.defineProperty(exports, 'TypeInfo', {
+  enumerable: true,
+  get: function get() {
+    return _utilities.TypeInfo;
+  }
+});
+Object.defineProperty(exports, 'isValidJSValue', {
+  enumerable: true,
+  get: function get() {
+    return _utilities.isValidJSValue;
+  }
+});
+Object.defineProperty(exports, 'isValidLiteralValue', {
+  enumerable: true,
+  get: function get() {
+    return _utilities.isValidLiteralValue;
+  }
+});
+Object.defineProperty(exports, 'concatAST', {
+  enumerable: true,
+  get: function get() {
+    return _utilities.concatAST;
+  }
+});
+Object.defineProperty(exports, 'separateOperations', {
+  enumerable: true,
+  get: function get() {
+    return _utilities.separateOperations;
+  }
+});
+Object.defineProperty(exports, 'isEqualType', {
+  enumerable: true,
+  get: function get() {
+    return _utilities.isEqualType;
+  }
+});
+Object.defineProperty(exports, 'isTypeSubTypeOf', {
+  enumerable: true,
+  get: function get() {
+    return _utilities.isTypeSubTypeOf;
+  }
+});
+Object.defineProperty(exports, 'doTypesOverlap', {
+  enumerable: true,
+  get: function get() {
+    return _utilities.doTypesOverlap;
+  }
+});
+Object.defineProperty(exports, 'assertValidName', {
+  enumerable: true,
+  get: function get() {
+    return _utilities.assertValidName;
+  }
+});
+Object.defineProperty(exports, 'findBreakingChanges', {
+  enumerable: true,
+  get: function get() {
+    return _utilities.findBreakingChanges;
+  }
+});
+Object.defineProperty(exports, 'findDeprecatedUsages', {
+  enumerable: true,
+  get: function get() {
+    return _utilities.findDeprecatedUsages;
+  }
+});
+
+/***/ }),
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37574,9 +37528,9 @@ var _valueFromAST = __webpack_require__(48);
 
 var _lexer = __webpack_require__(100);
 
-var _parser = __webpack_require__(63);
+var _parser = __webpack_require__(64);
 
-var _values = __webpack_require__(132);
+var _values = __webpack_require__(130);
 
 var _kinds = __webpack_require__(3);
 
@@ -38028,7 +37982,7 @@ function cannotExecuteSchema() {
 }
 
 /***/ }),
-/* 134 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38039,7 +37993,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.isValidJSValue = isValidJSValue;
 
-var _iterall = __webpack_require__(66);
+var _iterall = __webpack_require__(67);
 
 var _invariant = __webpack_require__(5);
 
@@ -38140,7 +38094,7 @@ function isValidJSValue(value, type) {
 }
 
 /***/ }),
-/* 135 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38156,7 +38110,7 @@ var _error = __webpack_require__(0);
 
 var _printer = __webpack_require__(11);
 
-var _isValidLiteralValue = __webpack_require__(64);
+var _isValidLiteralValue = __webpack_require__(65);
 
 /**
  *  Copyright (c) 2015, Facebook, Inc.
@@ -38194,7 +38148,7 @@ function ArgumentsOfCorrectType(context) {
 }
 
 /***/ }),
-/* 136 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38213,7 +38167,7 @@ var _printer = __webpack_require__(11);
 
 var _definition = __webpack_require__(1);
 
-var _isValidLiteralValue = __webpack_require__(64);
+var _isValidLiteralValue = __webpack_require__(65);
 
 function defaultForNonNullArgMessage(varName, type, guessType) {
   return 'Variable "$' + varName + '" of type "' + String(type) + '" is required and ' + 'will not use the default value. ' + ('Perhaps you meant to use type "' + String(guessType) + '".');
@@ -38266,7 +38220,7 @@ function DefaultValuesOfCorrectType(context) {
 }
 
 /***/ }),
-/* 137 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38394,7 +38348,7 @@ function getSuggestedFieldNames(schema, type, fieldName) {
 }
 
 /***/ }),
-/* 138 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38458,7 +38412,7 @@ function FragmentsOnCompositeTypes(context) {
 }
 
 /***/ }),
-/* 139 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38559,7 +38513,7 @@ function KnownArgumentNames(context) {
 }
 
 /***/ }),
-/* 140 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38672,7 +38626,7 @@ function getDirectiveLocationForASTPath(ancestors) {
 }
 
 /***/ }),
-/* 141 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38718,7 +38672,7 @@ function KnownFragmentNames(context) {
 }
 
 /***/ }),
-/* 142 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38794,7 +38748,7 @@ function KnownTypeNames(context) {
 }
 
 /***/ }),
-/* 143 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38847,7 +38801,7 @@ function LoneAnonymousOperation(context) {
 }
 
 /***/ }),
-/* 144 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38939,7 +38893,7 @@ function NoFragmentCycles(context) {
 }
 
 /***/ }),
-/* 145 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39000,7 +38954,7 @@ function NoUndefinedVariables(context) {
 }
 
 /***/ }),
-/* 146 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39068,7 +39022,7 @@ function NoUnusedFragments(context) {
 }
 
 /***/ }),
-/* 147 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39135,7 +39089,7 @@ function NoUnusedVariables(context) {
 }
 
 /***/ }),
-/* 148 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39694,7 +39648,7 @@ function _pairSetAdd(data, a, b, areMutuallyExclusive) {
 }
 
 /***/ }),
-/* 149 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39709,7 +39663,7 @@ exports.PossibleFragmentSpreads = PossibleFragmentSpreads;
 
 var _error = __webpack_require__(0);
 
-var _typeComparators = __webpack_require__(65);
+var _typeComparators = __webpack_require__(66);
 
 var _typeFromAST = __webpack_require__(16);
 
@@ -39763,7 +39717,7 @@ function getFragmentType(context, name) {
 }
 
 /***/ }),
-/* 150 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39856,7 +39810,7 @@ function ProvidedNonNullArguments(context) {
 }
 
 /***/ }),
-/* 151 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39913,7 +39867,7 @@ function ScalarLeafs(context) {
 }
 
 /***/ }),
-/* 152 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39968,7 +39922,7 @@ function UniqueArgumentNames(context) {
 }
 
 /***/ }),
-/* 153 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40023,7 +39977,7 @@ function UniqueDirectivesPerLocation(context) {
 }
 
 /***/ }),
-/* 154 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40074,7 +40028,7 @@ function UniqueFragmentNames(context) {
 }
 
 /***/ }),
-/* 155 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40134,7 +40088,7 @@ function UniqueInputFieldNames(context) {
 }
 
 /***/ }),
-/* 156 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40188,7 +40142,7 @@ function UniqueOperationNames(context) {
 }
 
 /***/ }),
-/* 157 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40239,7 +40193,7 @@ function UniqueVariableNames(context) {
 }
 
 /***/ }),
-/* 158 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40294,7 +40248,7 @@ function VariablesAreInputTypes(context) {
 }
 
 /***/ }),
-/* 159 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40310,7 +40264,7 @@ var _error = __webpack_require__(0);
 
 var _definition = __webpack_require__(1);
 
-var _typeComparators = __webpack_require__(65);
+var _typeComparators = __webpack_require__(66);
 
 var _typeFromAST = __webpack_require__(16);
 
@@ -40375,7 +40329,7 @@ function effectiveType(varType, varDef) {
 }
 
 /***/ }),
-/* 160 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40386,55 +40340,55 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.specifiedRules = undefined;
 
-var _UniqueOperationNames = __webpack_require__(156);
+var _UniqueOperationNames = __webpack_require__(155);
 
-var _LoneAnonymousOperation = __webpack_require__(143);
+var _LoneAnonymousOperation = __webpack_require__(142);
 
-var _KnownTypeNames = __webpack_require__(142);
+var _KnownTypeNames = __webpack_require__(141);
 
-var _FragmentsOnCompositeTypes = __webpack_require__(138);
+var _FragmentsOnCompositeTypes = __webpack_require__(137);
 
-var _VariablesAreInputTypes = __webpack_require__(158);
+var _VariablesAreInputTypes = __webpack_require__(157);
 
-var _ScalarLeafs = __webpack_require__(151);
+var _ScalarLeafs = __webpack_require__(150);
 
-var _FieldsOnCorrectType = __webpack_require__(137);
+var _FieldsOnCorrectType = __webpack_require__(136);
 
-var _UniqueFragmentNames = __webpack_require__(154);
+var _UniqueFragmentNames = __webpack_require__(153);
 
-var _KnownFragmentNames = __webpack_require__(141);
+var _KnownFragmentNames = __webpack_require__(140);
 
-var _NoUnusedFragments = __webpack_require__(146);
+var _NoUnusedFragments = __webpack_require__(145);
 
-var _PossibleFragmentSpreads = __webpack_require__(149);
+var _PossibleFragmentSpreads = __webpack_require__(148);
 
-var _NoFragmentCycles = __webpack_require__(144);
+var _NoFragmentCycles = __webpack_require__(143);
 
-var _UniqueVariableNames = __webpack_require__(157);
+var _UniqueVariableNames = __webpack_require__(156);
 
-var _NoUndefinedVariables = __webpack_require__(145);
+var _NoUndefinedVariables = __webpack_require__(144);
 
-var _NoUnusedVariables = __webpack_require__(147);
+var _NoUnusedVariables = __webpack_require__(146);
 
-var _KnownDirectives = __webpack_require__(140);
+var _KnownDirectives = __webpack_require__(139);
 
-var _UniqueDirectivesPerLocation = __webpack_require__(153);
+var _UniqueDirectivesPerLocation = __webpack_require__(152);
 
-var _KnownArgumentNames = __webpack_require__(139);
+var _KnownArgumentNames = __webpack_require__(138);
 
-var _UniqueArgumentNames = __webpack_require__(152);
+var _UniqueArgumentNames = __webpack_require__(151);
 
-var _ArgumentsOfCorrectType = __webpack_require__(135);
+var _ArgumentsOfCorrectType = __webpack_require__(134);
 
-var _ProvidedNonNullArguments = __webpack_require__(150);
+var _ProvidedNonNullArguments = __webpack_require__(149);
 
-var _DefaultValuesOfCorrectType = __webpack_require__(136);
+var _DefaultValuesOfCorrectType = __webpack_require__(135);
 
-var _VariablesInAllowedPosition = __webpack_require__(159);
+var _VariablesInAllowedPosition = __webpack_require__(158);
 
-var _OverlappingFieldsCanBeMerged = __webpack_require__(148);
+var _OverlappingFieldsCanBeMerged = __webpack_require__(147);
 
-var _UniqueInputFieldNames = __webpack_require__(155);
+var _UniqueInputFieldNames = __webpack_require__(154);
 
 /**
  * This set includes all validation rules defined by the GraphQL spec.
@@ -40527,7 +40481,7 @@ var specifiedRules = exports.specifiedRules = [_UniqueOperationNames.UniqueOpera
 // Spec Section: "Operation Name Uniqueness"
 
 /***/ }),
-/* 161 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40556,7 +40510,7 @@ var _schema = __webpack_require__(22);
 
 var _TypeInfo = __webpack_require__(103);
 
-var _specifiedRules = __webpack_require__(160);
+var _specifiedRules = __webpack_require__(159);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -40766,7 +40720,7 @@ var ValidationContext = exports.ValidationContext = function () {
 }();
 
 /***/ }),
-/* 162 */
+/* 161 */
 /***/ (function(module, exports) {
 
 module.exports = [
@@ -41498,7 +41452,7 @@ module.exports = [
 ];
 
 /***/ }),
-/* 163 */
+/* 162 */
 /***/ (function(module, exports) {
 
 module.exports = [
@@ -41761,18 +41715,20 @@ module.exports = [
 ];
 
 /***/ }),
-/* 164 */,
-/* 165 */
+/* 163 */,
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const express = __webpack_require__(82);
-const graphqlHTTP = __webpack_require__(171);
-const schema_1 = __webpack_require__(130);
-const root_1 = __webpack_require__(129);
+const express = __webpack_require__(83);
+const log_1 = __webpack_require__(62);
+const graphqlHTTP = __webpack_require__(170);
+const schema_1 = __webpack_require__(168);
+const root_1 = __webpack_require__(167);
 exports.app = express();
+exports.app.use((req, res, next) => { log_1.registerLog(req); next(); });
 exports.app.use('/graphql', graphqlHTTP({
     schema: schema_1.schema,
     rootValue: root_1.root,
@@ -41782,24 +41738,93 @@ exports.app.use('/graphql', graphqlHTTP({
 
 
 /***/ }),
-/* 166 */,
-/* 167 */
+/* 165 */,
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const azure_function_express_1 = __webpack_require__(60);
-const _app_1 = __webpack_require__(165);
+const _app_1 = __webpack_require__(164);
 global.__app = _app_1.app;
 global.__app_handler = azure_function_express_1.createHandler(_app_1.app);
 module.exports = global.__app_handler;
 
 
 /***/ }),
-/* 168 */,
-/* 169 */,
-/* 170 */
+/* 167 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const log_1 = __webpack_require__(62);
+function getFriends(obj) {
+    log_1.log('getFriends', obj);
+    return obj.friendIds.map(x => getHuman(x));
+}
+function getHuman(id) {
+    if (id === '101') {
+        return {
+            id: '101',
+            name: 'Luke',
+            appearsIn: ['NEWHOPE'],
+            totalCredits: 5,
+            friendIds: ['102'],
+            friends() { return getFriends(this); }
+        };
+    }
+    else if (id === '102') {
+        return {
+            id: '102',
+            name: 'Princess',
+            appearsIn: ['NEWHOPE'],
+            totalCredits: 5,
+            friendIds: ['101'],
+            friends() { return getFriends(this); }
+        };
+    }
+    return null;
+}
+exports.root = {
+    test: () => getHuman('101'),
+    hero: (args) => getHuman(args.id),
+};
+
+
+/***/ }),
+/* 168 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const graphql_1 = __webpack_require__(131);
+exports.schema = graphql_1.buildSchema(`
+type Query {
+  test:Human
+  hero(id: ID): Human
+}
+
+type Human {
+  id: ID!
+  name: String!
+  friends: [Human]
+  appearsIn: [Episode]!
+  totalCredits: Int
+}
+
+enum Episode {
+  NEWHOPE
+  EMPIRE
+  JEDI
+}
+`);
+
+
+/***/ }),
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41963,7 +41988,7 @@ function parse(val) {
 
 
 /***/ }),
-/* 171 */
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41983,7 +42008,7 @@ var _accepts = __webpack_require__(61);
 
 var _accepts2 = _interopRequireDefault(_accepts);
 
-var _graphql = __webpack_require__(96);
+var _graphql = __webpack_require__(131);
 
 var _httpErrors = __webpack_require__(49);
 
@@ -41993,9 +42018,9 @@ var _url = __webpack_require__(33);
 
 var _url2 = _interopRequireDefault(_url);
 
-var _parseBody = __webpack_require__(172);
+var _parseBody = __webpack_require__(171);
 
-var _renderGraphiQL = __webpack_require__(173);
+var _renderGraphiQL = __webpack_require__(172);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -42260,7 +42285,7 @@ function sendResponse(response, data) {
 }
 
 /***/ }),
-/* 172 */
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42282,11 +42307,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 exports.parseBody = parseBody;
 
-var _contentType = __webpack_require__(62);
+var _contentType = __webpack_require__(63);
 
 var _contentType2 = _interopRequireDefault(_contentType);
 
-var _rawBody = __webpack_require__(210);
+var _rawBody = __webpack_require__(209);
 
 var _rawBody2 = _interopRequireDefault(_rawBody);
 
@@ -42294,11 +42319,11 @@ var _httpErrors = __webpack_require__(49);
 
 var _httpErrors2 = _interopRequireDefault(_httpErrors);
 
-var _querystring = __webpack_require__(68);
+var _querystring = __webpack_require__(69);
 
 var _querystring2 = _interopRequireDefault(_querystring);
 
-var _zlib = __webpack_require__(212);
+var _zlib = __webpack_require__(211);
 
 var _zlib2 = _interopRequireDefault(_zlib);
 
@@ -42427,7 +42452,7 @@ function decompressed(req, encoding) {
 }
 
 /***/ }),
-/* 173 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42475,7 +42500,7 @@ function renderGraphiQL(data) {
 }
 
 /***/ }),
-/* 174 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42514,7 +42539,7 @@ function formatError(error) {
  */
 
 /***/ }),
-/* 175 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42552,7 +42577,7 @@ function locatedError(originalError, nodes, path) {
  */
 
 /***/ }),
-/* 176 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42606,7 +42631,7 @@ function lpad(len, str) {
 }
 
 /***/ }),
-/* 177 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42616,7 +42641,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _execute = __webpack_require__(131);
+var _execute = __webpack_require__(129);
 
 Object.defineProperty(exports, 'execute', {
   enumerable: true,
@@ -42638,7 +42663,7 @@ Object.defineProperty(exports, 'responsePathAsArray', {
 });
 
 /***/ }),
-/* 178 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42651,11 +42676,11 @@ exports.graphql = graphql;
 
 var _source = __webpack_require__(102);
 
-var _parser = __webpack_require__(63);
+var _parser = __webpack_require__(64);
 
-var _validate = __webpack_require__(161);
+var _validate = __webpack_require__(160);
 
-var _execute = __webpack_require__(131);
+var _execute = __webpack_require__(129);
 
 /**
  * This is the primary entry point function for fulfilling GraphQL operations
@@ -42707,7 +42732,7 @@ function graphql(schema, requestString, rootValue, contextValue, variableValues,
 }
 
 /***/ }),
-/* 179 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42742,7 +42767,7 @@ Object.defineProperty(exports, 'TokenKind', {
   }
 });
 
-var _parser = __webpack_require__(63);
+var _parser = __webpack_require__(64);
 
 Object.defineProperty(exports, 'parse', {
   enumerable: true,
@@ -42823,7 +42848,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 exports.Kind = Kind;
 
 /***/ }),
-/* 180 */
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43143,7 +43168,7 @@ Object.defineProperty(exports, 'TypeNameMetaFieldDef', {
 });
 
 /***/ }),
-/* 181 */
+/* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43168,7 +43193,7 @@ var _keyValMap2 = _interopRequireDefault(_keyValMap);
 
 var _valueFromAST = __webpack_require__(48);
 
-var _parser = __webpack_require__(63);
+var _parser = __webpack_require__(64);
 
 var _schema = __webpack_require__(22);
 
@@ -43458,7 +43483,7 @@ function cannotExecuteClientSchema() {
 }
 
 /***/ }),
-/* 182 */
+/* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43498,7 +43523,7 @@ function concatAST(asts) {
  */
 
 /***/ }),
-/* 183 */
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43521,7 +43546,7 @@ var _keyValMap = __webpack_require__(97);
 
 var _keyValMap2 = _interopRequireDefault(_keyValMap);
 
-var _buildASTSchema = __webpack_require__(133);
+var _buildASTSchema = __webpack_require__(132);
 
 var _valueFromAST = __webpack_require__(48);
 
@@ -44034,7 +44059,7 @@ function cannotExecuteExtendedSchema() {
 }
 
 /***/ }),
-/* 184 */
+/* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44342,7 +44367,7 @@ function findValuesRemovedFromEnums(oldSchema, newSchema) {
 }
 
 /***/ }),
-/* 185 */
+/* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44407,7 +44432,7 @@ function findDeprecatedUsages(schema, ast) {
  */
 
 /***/ }),
-/* 186 */
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44455,7 +44480,7 @@ function getOperationAST(documentAST, operationName) {
  */
 
 /***/ }),
-/* 187 */
+/* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44465,7 +44490,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _introspectionQuery = __webpack_require__(188);
+var _introspectionQuery = __webpack_require__(187);
 
 Object.defineProperty(exports, 'introspectionQuery', {
   enumerable: true,
@@ -44474,7 +44499,7 @@ Object.defineProperty(exports, 'introspectionQuery', {
   }
 });
 
-var _getOperationAST = __webpack_require__(186);
+var _getOperationAST = __webpack_require__(185);
 
 Object.defineProperty(exports, 'getOperationAST', {
   enumerable: true,
@@ -44483,7 +44508,7 @@ Object.defineProperty(exports, 'getOperationAST', {
   }
 });
 
-var _buildClientSchema = __webpack_require__(181);
+var _buildClientSchema = __webpack_require__(180);
 
 Object.defineProperty(exports, 'buildClientSchema', {
   enumerable: true,
@@ -44492,7 +44517,7 @@ Object.defineProperty(exports, 'buildClientSchema', {
   }
 });
 
-var _buildASTSchema = __webpack_require__(133);
+var _buildASTSchema = __webpack_require__(132);
 
 Object.defineProperty(exports, 'buildASTSchema', {
   enumerable: true,
@@ -44507,7 +44532,7 @@ Object.defineProperty(exports, 'buildSchema', {
   }
 });
 
-var _extendSchema = __webpack_require__(183);
+var _extendSchema = __webpack_require__(182);
 
 Object.defineProperty(exports, 'extendSchema', {
   enumerable: true,
@@ -44516,7 +44541,7 @@ Object.defineProperty(exports, 'extendSchema', {
   }
 });
 
-var _schemaPrinter = __webpack_require__(189);
+var _schemaPrinter = __webpack_require__(188);
 
 Object.defineProperty(exports, 'printSchema', {
   enumerable: true,
@@ -44573,7 +44598,7 @@ Object.defineProperty(exports, 'TypeInfo', {
   }
 });
 
-var _isValidJSValue = __webpack_require__(134);
+var _isValidJSValue = __webpack_require__(133);
 
 Object.defineProperty(exports, 'isValidJSValue', {
   enumerable: true,
@@ -44582,7 +44607,7 @@ Object.defineProperty(exports, 'isValidJSValue', {
   }
 });
 
-var _isValidLiteralValue = __webpack_require__(64);
+var _isValidLiteralValue = __webpack_require__(65);
 
 Object.defineProperty(exports, 'isValidLiteralValue', {
   enumerable: true,
@@ -44591,7 +44616,7 @@ Object.defineProperty(exports, 'isValidLiteralValue', {
   }
 });
 
-var _concatAST = __webpack_require__(182);
+var _concatAST = __webpack_require__(181);
 
 Object.defineProperty(exports, 'concatAST', {
   enumerable: true,
@@ -44600,7 +44625,7 @@ Object.defineProperty(exports, 'concatAST', {
   }
 });
 
-var _separateOperations = __webpack_require__(190);
+var _separateOperations = __webpack_require__(189);
 
 Object.defineProperty(exports, 'separateOperations', {
   enumerable: true,
@@ -44609,7 +44634,7 @@ Object.defineProperty(exports, 'separateOperations', {
   }
 });
 
-var _typeComparators = __webpack_require__(65);
+var _typeComparators = __webpack_require__(66);
 
 Object.defineProperty(exports, 'isEqualType', {
   enumerable: true,
@@ -44639,7 +44664,7 @@ Object.defineProperty(exports, 'assertValidName', {
   }
 });
 
-var _findBreakingChanges = __webpack_require__(184);
+var _findBreakingChanges = __webpack_require__(183);
 
 Object.defineProperty(exports, 'findBreakingChanges', {
   enumerable: true,
@@ -44648,7 +44673,7 @@ Object.defineProperty(exports, 'findBreakingChanges', {
   }
 });
 
-var _findDeprecatedUsages = __webpack_require__(185);
+var _findDeprecatedUsages = __webpack_require__(184);
 
 Object.defineProperty(exports, 'findDeprecatedUsages', {
   enumerable: true,
@@ -44658,7 +44683,7 @@ Object.defineProperty(exports, 'findDeprecatedUsages', {
 });
 
 /***/ }),
-/* 188 */
+/* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44678,7 +44703,7 @@ var introspectionQuery = exports.introspectionQuery = '\n  query IntrospectionQu
  */
 
 /***/ }),
-/* 189 */
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44968,7 +44993,7 @@ function breakLine(line, len) {
 }
 
 /***/ }),
-/* 190 */
+/* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45069,7 +45094,7 @@ function collectTransitiveDependencies(collected, depGraph, fromName) {
 }
 
 /***/ }),
-/* 191 */
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45079,7 +45104,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _validate = __webpack_require__(161);
+var _validate = __webpack_require__(160);
 
 Object.defineProperty(exports, 'validate', {
   enumerable: true,
@@ -45094,7 +45119,7 @@ Object.defineProperty(exports, 'ValidationContext', {
   }
 });
 
-var _specifiedRules = __webpack_require__(160);
+var _specifiedRules = __webpack_require__(159);
 
 Object.defineProperty(exports, 'specifiedRules', {
   enumerable: true,
@@ -45103,7 +45128,7 @@ Object.defineProperty(exports, 'specifiedRules', {
   }
 });
 
-var _ArgumentsOfCorrectType = __webpack_require__(135);
+var _ArgumentsOfCorrectType = __webpack_require__(134);
 
 Object.defineProperty(exports, 'ArgumentsOfCorrectTypeRule', {
   enumerable: true,
@@ -45112,7 +45137,7 @@ Object.defineProperty(exports, 'ArgumentsOfCorrectTypeRule', {
   }
 });
 
-var _DefaultValuesOfCorrectType = __webpack_require__(136);
+var _DefaultValuesOfCorrectType = __webpack_require__(135);
 
 Object.defineProperty(exports, 'DefaultValuesOfCorrectTypeRule', {
   enumerable: true,
@@ -45121,7 +45146,7 @@ Object.defineProperty(exports, 'DefaultValuesOfCorrectTypeRule', {
   }
 });
 
-var _FieldsOnCorrectType = __webpack_require__(137);
+var _FieldsOnCorrectType = __webpack_require__(136);
 
 Object.defineProperty(exports, 'FieldsOnCorrectTypeRule', {
   enumerable: true,
@@ -45130,7 +45155,7 @@ Object.defineProperty(exports, 'FieldsOnCorrectTypeRule', {
   }
 });
 
-var _FragmentsOnCompositeTypes = __webpack_require__(138);
+var _FragmentsOnCompositeTypes = __webpack_require__(137);
 
 Object.defineProperty(exports, 'FragmentsOnCompositeTypesRule', {
   enumerable: true,
@@ -45139,7 +45164,7 @@ Object.defineProperty(exports, 'FragmentsOnCompositeTypesRule', {
   }
 });
 
-var _KnownArgumentNames = __webpack_require__(139);
+var _KnownArgumentNames = __webpack_require__(138);
 
 Object.defineProperty(exports, 'KnownArgumentNamesRule', {
   enumerable: true,
@@ -45148,7 +45173,7 @@ Object.defineProperty(exports, 'KnownArgumentNamesRule', {
   }
 });
 
-var _KnownDirectives = __webpack_require__(140);
+var _KnownDirectives = __webpack_require__(139);
 
 Object.defineProperty(exports, 'KnownDirectivesRule', {
   enumerable: true,
@@ -45157,7 +45182,7 @@ Object.defineProperty(exports, 'KnownDirectivesRule', {
   }
 });
 
-var _KnownFragmentNames = __webpack_require__(141);
+var _KnownFragmentNames = __webpack_require__(140);
 
 Object.defineProperty(exports, 'KnownFragmentNamesRule', {
   enumerable: true,
@@ -45166,7 +45191,7 @@ Object.defineProperty(exports, 'KnownFragmentNamesRule', {
   }
 });
 
-var _KnownTypeNames = __webpack_require__(142);
+var _KnownTypeNames = __webpack_require__(141);
 
 Object.defineProperty(exports, 'KnownTypeNamesRule', {
   enumerable: true,
@@ -45175,7 +45200,7 @@ Object.defineProperty(exports, 'KnownTypeNamesRule', {
   }
 });
 
-var _LoneAnonymousOperation = __webpack_require__(143);
+var _LoneAnonymousOperation = __webpack_require__(142);
 
 Object.defineProperty(exports, 'LoneAnonymousOperationRule', {
   enumerable: true,
@@ -45184,7 +45209,7 @@ Object.defineProperty(exports, 'LoneAnonymousOperationRule', {
   }
 });
 
-var _NoFragmentCycles = __webpack_require__(144);
+var _NoFragmentCycles = __webpack_require__(143);
 
 Object.defineProperty(exports, 'NoFragmentCyclesRule', {
   enumerable: true,
@@ -45193,7 +45218,7 @@ Object.defineProperty(exports, 'NoFragmentCyclesRule', {
   }
 });
 
-var _NoUndefinedVariables = __webpack_require__(145);
+var _NoUndefinedVariables = __webpack_require__(144);
 
 Object.defineProperty(exports, 'NoUndefinedVariablesRule', {
   enumerable: true,
@@ -45202,7 +45227,7 @@ Object.defineProperty(exports, 'NoUndefinedVariablesRule', {
   }
 });
 
-var _NoUnusedFragments = __webpack_require__(146);
+var _NoUnusedFragments = __webpack_require__(145);
 
 Object.defineProperty(exports, 'NoUnusedFragmentsRule', {
   enumerable: true,
@@ -45211,7 +45236,7 @@ Object.defineProperty(exports, 'NoUnusedFragmentsRule', {
   }
 });
 
-var _NoUnusedVariables = __webpack_require__(147);
+var _NoUnusedVariables = __webpack_require__(146);
 
 Object.defineProperty(exports, 'NoUnusedVariablesRule', {
   enumerable: true,
@@ -45220,7 +45245,7 @@ Object.defineProperty(exports, 'NoUnusedVariablesRule', {
   }
 });
 
-var _OverlappingFieldsCanBeMerged = __webpack_require__(148);
+var _OverlappingFieldsCanBeMerged = __webpack_require__(147);
 
 Object.defineProperty(exports, 'OverlappingFieldsCanBeMergedRule', {
   enumerable: true,
@@ -45229,7 +45254,7 @@ Object.defineProperty(exports, 'OverlappingFieldsCanBeMergedRule', {
   }
 });
 
-var _PossibleFragmentSpreads = __webpack_require__(149);
+var _PossibleFragmentSpreads = __webpack_require__(148);
 
 Object.defineProperty(exports, 'PossibleFragmentSpreadsRule', {
   enumerable: true,
@@ -45238,7 +45263,7 @@ Object.defineProperty(exports, 'PossibleFragmentSpreadsRule', {
   }
 });
 
-var _ProvidedNonNullArguments = __webpack_require__(150);
+var _ProvidedNonNullArguments = __webpack_require__(149);
 
 Object.defineProperty(exports, 'ProvidedNonNullArgumentsRule', {
   enumerable: true,
@@ -45247,7 +45272,7 @@ Object.defineProperty(exports, 'ProvidedNonNullArgumentsRule', {
   }
 });
 
-var _ScalarLeafs = __webpack_require__(151);
+var _ScalarLeafs = __webpack_require__(150);
 
 Object.defineProperty(exports, 'ScalarLeafsRule', {
   enumerable: true,
@@ -45256,7 +45281,7 @@ Object.defineProperty(exports, 'ScalarLeafsRule', {
   }
 });
 
-var _UniqueArgumentNames = __webpack_require__(152);
+var _UniqueArgumentNames = __webpack_require__(151);
 
 Object.defineProperty(exports, 'UniqueArgumentNamesRule', {
   enumerable: true,
@@ -45265,7 +45290,7 @@ Object.defineProperty(exports, 'UniqueArgumentNamesRule', {
   }
 });
 
-var _UniqueDirectivesPerLocation = __webpack_require__(153);
+var _UniqueDirectivesPerLocation = __webpack_require__(152);
 
 Object.defineProperty(exports, 'UniqueDirectivesPerLocationRule', {
   enumerable: true,
@@ -45274,7 +45299,7 @@ Object.defineProperty(exports, 'UniqueDirectivesPerLocationRule', {
   }
 });
 
-var _UniqueFragmentNames = __webpack_require__(154);
+var _UniqueFragmentNames = __webpack_require__(153);
 
 Object.defineProperty(exports, 'UniqueFragmentNamesRule', {
   enumerable: true,
@@ -45283,7 +45308,7 @@ Object.defineProperty(exports, 'UniqueFragmentNamesRule', {
   }
 });
 
-var _UniqueInputFieldNames = __webpack_require__(155);
+var _UniqueInputFieldNames = __webpack_require__(154);
 
 Object.defineProperty(exports, 'UniqueInputFieldNamesRule', {
   enumerable: true,
@@ -45292,7 +45317,7 @@ Object.defineProperty(exports, 'UniqueInputFieldNamesRule', {
   }
 });
 
-var _UniqueOperationNames = __webpack_require__(156);
+var _UniqueOperationNames = __webpack_require__(155);
 
 Object.defineProperty(exports, 'UniqueOperationNamesRule', {
   enumerable: true,
@@ -45301,7 +45326,7 @@ Object.defineProperty(exports, 'UniqueOperationNamesRule', {
   }
 });
 
-var _UniqueVariableNames = __webpack_require__(157);
+var _UniqueVariableNames = __webpack_require__(156);
 
 Object.defineProperty(exports, 'UniqueVariableNamesRule', {
   enumerable: true,
@@ -45310,7 +45335,7 @@ Object.defineProperty(exports, 'UniqueVariableNamesRule', {
   }
 });
 
-var _VariablesAreInputTypes = __webpack_require__(158);
+var _VariablesAreInputTypes = __webpack_require__(157);
 
 Object.defineProperty(exports, 'VariablesAreInputTypesRule', {
   enumerable: true,
@@ -45319,7 +45344,7 @@ Object.defineProperty(exports, 'VariablesAreInputTypesRule', {
   }
 });
 
-var _VariablesInAllowedPosition = __webpack_require__(159);
+var _VariablesInAllowedPosition = __webpack_require__(158);
 
 Object.defineProperty(exports, 'VariablesInAllowedPositionRule', {
   enumerable: true,
@@ -45329,7 +45354,7 @@ Object.defineProperty(exports, 'VariablesInAllowedPositionRule', {
 });
 
 /***/ }),
-/* 192 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45890,7 +45915,7 @@ function findIdx(table, val) {
 
 
 /***/ }),
-/* 193 */
+/* 192 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45936,7 +45961,7 @@ module.exports = {
 
     'shiftjis': {
         type: '_dbcs',
-        table: function() { return __webpack_require__(203) },
+        table: function() { return __webpack_require__(202) },
         encodeAdd: {'\u00a5': 0x5C, '\u203E': 0x7E},
         encodeSkipVals: [{from: 0xED40, to: 0xF940}],
     },
@@ -45953,7 +45978,7 @@ module.exports = {
 
     'eucjp': {
         type: '_dbcs',
-        table: function() { return __webpack_require__(201) },
+        table: function() { return __webpack_require__(200) },
         encodeAdd: {'\u00a5': 0x5C, '\u203E': 0x7E},
     },
 
@@ -45986,7 +46011,7 @@ module.exports = {
     // GBK (~22000 chars) is an extension of CP936 that added user-mapped chars and some other.
     'gbk': {
         type: '_dbcs',
-        table: function() { return __webpack_require__(106).concat(__webpack_require__(163)) },
+        table: function() { return __webpack_require__(106).concat(__webpack_require__(162)) },
     },
     'xgbk': 'gbk',
     'isoir58': 'gbk',
@@ -45998,8 +46023,8 @@ module.exports = {
     // http://www.khngai.com/chinese/charmap/tblgbk.php?page=0
     'gb18030': {
         type: '_dbcs',
-        table: function() { return __webpack_require__(106).concat(__webpack_require__(163)) },
-        gb18030: function() { return __webpack_require__(202) },
+        table: function() { return __webpack_require__(106).concat(__webpack_require__(162)) },
+        gb18030: function() { return __webpack_require__(201) },
         encodeSkipVals: [0x80],
         encodeAdd: {'€': 0xA2E3},
     },
@@ -46014,7 +46039,7 @@ module.exports = {
     '949': 'cp949',
     'cp949': {
         type: '_dbcs',
-        table: function() { return __webpack_require__(200) },
+        table: function() { return __webpack_require__(199) },
     },
 
     'cseuckr': 'cp949',
@@ -46055,14 +46080,14 @@ module.exports = {
     '950': 'cp950',
     'cp950': {
         type: '_dbcs',
-        table: function() { return __webpack_require__(162) },
+        table: function() { return __webpack_require__(161) },
     },
 
     // Big5 has many variations and is an extension of cp950. We use Encoding Standard's as a consensus.
     'big5': 'big5hkscs',
     'big5hkscs': {
         type: '_dbcs',
-        table: function() { return __webpack_require__(162).concat(__webpack_require__(199)) },
+        table: function() { return __webpack_require__(161).concat(__webpack_require__(198)) },
         encodeSkipVals: [0xa2cc],
     },
 
@@ -46073,7 +46098,7 @@ module.exports = {
 
 
 /***/ }),
-/* 194 */
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46082,14 +46107,14 @@ module.exports = {
 // Update this array if you add/rename/remove files in this directory.
 // We support Browserify by skipping automatic module discovery and requiring modules directly.
 var modules = [
-    __webpack_require__(195),
+    __webpack_require__(194),
+    __webpack_require__(203),
     __webpack_require__(204),
-    __webpack_require__(205),
-    __webpack_require__(196),
-    __webpack_require__(198),
+    __webpack_require__(195),
     __webpack_require__(197),
+    __webpack_require__(196),
+    __webpack_require__(191),
     __webpack_require__(192),
-    __webpack_require__(193),
 ];
 
 // Put all encoding/alias/codec definitions to single object and export it. 
@@ -46102,7 +46127,7 @@ for (var i = 0; i < modules.length; i++) {
 
 
 /***/ }),
-/* 195 */
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46153,7 +46178,7 @@ InternalCodec.prototype.decoder = InternalDecoder;
 //------------------------------------------------------------------------------
 
 // We use node.js internal decoder. Its signature is the same as ours.
-var StringDecoder = __webpack_require__(211).StringDecoder;
+var StringDecoder = __webpack_require__(210).StringDecoder;
 
 if (!StringDecoder.prototype.end) // Node v0.8 doesn't have this method.
     StringDecoder.prototype.end = function() {};
@@ -46296,7 +46321,7 @@ InternalDecoderCesu8.prototype.end = function() {
 
 
 /***/ }),
-/* 196 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46375,7 +46400,7 @@ SBCSDecoder.prototype.end = function() {
 
 
 /***/ }),
-/* 197 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46832,7 +46857,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 198 */
+/* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47008,7 +47033,7 @@ module.exports = {
 
 
 /***/ }),
-/* 199 */
+/* 198 */
 /***/ (function(module, exports) {
 
 module.exports = [
@@ -47517,7 +47542,7 @@ module.exports = [
 ];
 
 /***/ }),
-/* 200 */
+/* 199 */
 /***/ (function(module, exports) {
 
 module.exports = [
@@ -49900,7 +49925,7 @@ module.exports = [
 ];
 
 /***/ }),
-/* 201 */
+/* 200 */
 /***/ (function(module, exports) {
 
 module.exports = [
@@ -50725,7 +50750,7 @@ module.exports = [
 ];
 
 /***/ }),
-/* 202 */
+/* 201 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -51150,7 +51175,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 203 */
+/* 202 */
 /***/ (function(module, exports) {
 
 module.exports = [
@@ -51701,7 +51726,7 @@ module.exports = [
 ];
 
 /***/ }),
-/* 204 */
+/* 203 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51884,7 +51909,7 @@ function detectEncoding(buf, defaultEncoding) {
 
 
 /***/ }),
-/* 205 */
+/* 204 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52180,7 +52205,7 @@ Utf7IMAPDecoder.prototype.end = function() {
 
 
 /***/ }),
-/* 206 */
+/* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52239,7 +52264,7 @@ StripBOMWrapper.prototype.end = function() {
 
 
 /***/ }),
-/* 207 */
+/* 206 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52460,13 +52485,13 @@ module.exports = function (iconv) {
 
 
 /***/ }),
-/* 208 */
+/* 207 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var bomHandling = __webpack_require__(206),
+var bomHandling = __webpack_require__(205),
     iconv = module.exports;
 
 // All codecs and aliases are kept here, keyed by encoding name/alias.
@@ -52524,7 +52549,7 @@ iconv.fromEncoding = iconv.decode;
 iconv._codecDataCache = {};
 iconv.getCodec = function getCodec(encoding) {
     if (!iconv.encodings)
-        iconv.encodings = __webpack_require__(194); // Lazy load all encoding definitions.
+        iconv.encodings = __webpack_require__(193); // Lazy load all encoding definitions.
     
     // Canonicalize encoding name: strip all non-alphanumeric chars and appended year.
     var enc = (''+encoding).toLowerCase().replace(/[^0-9a-z]|:\d{4}$/g, "");
@@ -52598,17 +52623,17 @@ if (nodeVer) {
     // Load streaming support in Node v0.10+
     var nodeVerArr = nodeVer.split(".").map(Number);
     if (nodeVerArr[0] > 0 || nodeVerArr[1] >= 10) {
-        __webpack_require__(209)(iconv);
+        __webpack_require__(208)(iconv);
     }
 
     // Load Node primitive extensions.
-    __webpack_require__(207)(iconv);
+    __webpack_require__(206)(iconv);
 }
 
 
 
 /***/ }),
-/* 209 */
+/* 208 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52735,7 +52760,7 @@ IconvLiteDecoderStream.prototype.collect = function(cb) {
 
 
 /***/ }),
-/* 210 */
+/* 209 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52753,9 +52778,9 @@ IconvLiteDecoderStream.prototype.collect = function(cb) {
  * @private
  */
 
-var bytes = __webpack_require__(170)
-var iconv = __webpack_require__(208)
-var unpipe = __webpack_require__(67)
+var bytes = __webpack_require__(169)
+var iconv = __webpack_require__(207)
+var unpipe = __webpack_require__(68)
 
 /**
  * Module exports.
@@ -53062,13 +53087,13 @@ function readStream (stream, encoding, length, limit, callback) {
 
 
 /***/ }),
-/* 211 */
+/* 210 */
 /***/ (function(module, exports) {
 
 module.exports = require("string_decoder");
 
 /***/ }),
-/* 212 */
+/* 211 */
 /***/ (function(module, exports) {
 
 module.exports = require("zlib");
