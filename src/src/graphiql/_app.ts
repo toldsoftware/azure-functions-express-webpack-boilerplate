@@ -5,6 +5,7 @@ export const app = express();
 app.use((req, res, next) => {
   const log = (req as any).context.log as (message: string, ...args: any[]) => void;
   log('graphiql request received', req.query);
+  next();
 });
 
 app.use('/graphiql', express.static('files'));

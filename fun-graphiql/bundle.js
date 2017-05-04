@@ -26873,6 +26873,7 @@ exports.app = express();
 exports.app.use((req, res, next) => {
     const log = req.context.log;
     log('graphiql request received', req.query);
+    next();
 });
 exports.app.use('/graphiql', express.static('files'));
 
