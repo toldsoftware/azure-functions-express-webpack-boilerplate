@@ -2,8 +2,9 @@ import * as express from 'express';
 
 export const app = express();
 
-app.get('/', function (req, res) {
-  res.send('Hello from Express! V2');
+app.get('/api/:foo/:bar', (req, res) => {
+  res.json({
+    foo  : req.params.foo,
+    bar  : req.params.bar
+  });
 });
-
-

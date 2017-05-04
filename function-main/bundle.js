@@ -6402,8 +6402,11 @@ module.exports = require("url");
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = __webpack_require__(59);
 exports.app = express();
-exports.app.get('/', function (req, res) {
-    res.send('Hello from Express! V2');
+exports.app.get('/api/:foo/:bar', (req, res) => {
+    res.json({
+        foo: req.params.foo,
+        bar: req.params.bar
+    });
 });
 
 
