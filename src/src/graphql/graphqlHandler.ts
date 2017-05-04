@@ -1,14 +1,7 @@
 import * as express from 'express';
 import * as graphqlHTTP from 'express-graphql';
-import { buildSchema } from 'graphql';
-
-export const schema = buildSchema(`
-  type Query {
-    hello: String
-  }
-`);
-
-var root = { hello: () => 'Hello world!' };
+import { schema } from './schema';
+import { root } from './root';
 
 export function graphqlHandler() {
 
