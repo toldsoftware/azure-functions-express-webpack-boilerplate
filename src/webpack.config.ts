@@ -4,7 +4,7 @@ const config: webpack.Configuration = {
     entry: './src/index-af.ts',
     output: {
         filename: 'index.js',
-        path: __dirname + '/deployment/catchall/',
+        path: __dirname + '/../function-main/',
         // No Sourcemap
         sourceMapFilename: ''
     },
