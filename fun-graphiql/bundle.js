@@ -26870,6 +26870,7 @@ module.exports = function(module) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = __webpack_require__(74);
 const path = __webpack_require__(0);
+const fs = __webpack_require__(5);
 const getLog_1 = __webpack_require__(215);
 exports.app = express();
 exports.app.use((req, res, next) => {
@@ -26889,7 +26890,47 @@ exports.app.use((req, res, next) => {
         || 'index.html';
     const p = path.join(__dirname, '../src/src/graphiql/files', filename);
     log('graphiql file handler', 'path', req.path, 'query', req.query, 'filename', filename, 'path', p);
-    res.sendFile(p);
+    // Doesn't work with azure function express
+    // res.sendFile(p);
+    fs.readFile(p, (err, data) => {
+        log('readFile path=' + p);
+        if (err != null) {
+            log('ERROR: ' + err);
+            res.statusCode = 404;
+            res.end('File Not Found: ' + p, 'test/plain');
+            return;
+        }
+        let body = data;
+        let type = 'text/plain';
+        if (p.match('\.html$')) {
+            type = 'text/html';
+        }
+        if (p.match('\.css$')) {
+            type = 'text/css';
+        }
+        if (p.match('\.js$')) {
+            type = 'application/x-javascript';
+        }
+        if (p.match('\.json$')) {
+            type = 'application/json';
+        }
+        if (p.match('\.jpg$')) {
+            type = 'image/jpeg';
+        }
+        if (p.match('\.png$')) {
+            type = 'image/png';
+        }
+        if (p.match('\.gif$')) {
+            type = 'image/gif';
+        }
+        if (p.match('\.ico$')) {
+            type = 'image/x-icon';
+        }
+        res.writeHead(200, {
+            'Cache-Control': 'max-age=300000, public'
+        });
+        res.end(body, type);
+    });
 });
 
 
