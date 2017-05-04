@@ -31,7 +31,7 @@ app.use((req, res, next) => {
   // Doesn't work with azure function express
   // res.sendFile(p);
 
-  fs.readFile(p, (err: any, data: any) => {
+  fs.readFile(p, (err, data) => {
     log('readFile path=' + p);
 
     if (err != null) {
