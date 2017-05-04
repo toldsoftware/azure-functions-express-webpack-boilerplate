@@ -54,10 +54,8 @@ app.use((req, res, next) => {
     if (p.match('\.gif$')) { type = 'image/gif'; }
     if (p.match('\.ico$')) { type = 'image/x-icon'; }
 
-    res.writeHead(200, {
-      'Cache-Control': 'max-age=300000, public'
-    });
-
-    res.end(body, type);
+    res.setHeader('Cache-Control', 'max-age=300000, public');
+    res.setHeader('Content-Type', type);
+    res.end(body, 'utf8');
   });
 });
