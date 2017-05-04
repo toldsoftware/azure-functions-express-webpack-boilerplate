@@ -15,9 +15,11 @@ app.use((req, res, next) => {
 // app.use('/graphiql', express.static('files'));
 
 // Alternative (use /file at end of path)
-app.use('/graphql', (req, res, next) => {
+app.use((req, res, next) => {
   const log = getLog(req);
-  const filename = req.path.replace(/\/(file)?$/, '');
+  const filename = req.path
+    .replace(/^graphiql/, '')
+    .replace(/\/(file)?$/, '');
 
   log('graphiql file handler', 'path', req.path, 'query', req.query, 'filename', filename);
 
