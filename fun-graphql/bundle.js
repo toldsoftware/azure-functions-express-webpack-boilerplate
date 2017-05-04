@@ -41773,14 +41773,12 @@ const graphqlHTTP = __webpack_require__(171);
 const schema_1 = __webpack_require__(130);
 const root_1 = __webpack_require__(129);
 exports.app = express();
-exports.app.use('/graphql', () => {
-    return graphqlHTTP({
-        schema: schema_1.schema,
-        rootValue: root_1.root,
-        graphiql: true,
-        pretty: true,
-    });
-});
+exports.app.use('/graphql', graphqlHTTP({
+    schema: schema_1.schema,
+    rootValue: root_1.root,
+    graphiql: true,
+    pretty: true,
+}));
 
 
 /***/ }),
