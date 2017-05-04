@@ -36428,6 +36428,9 @@ module.exports = [
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+function getFriends(obj, args, context) {
+    return obj.friendIds.map(x => getHuman(x));
+}
 function getHuman(id) {
     if (id === 101) {
         return {
@@ -36435,7 +36438,8 @@ function getHuman(id) {
             name: 'Luke',
             appearsIn: ['NEWHOPE'],
             totalCredits: 5,
-            friends: [{ id: 102 }]
+            friendIds: [102],
+            friends: getFriends
         };
     }
     else if (id === 102) {
@@ -36444,14 +36448,14 @@ function getHuman(id) {
             name: 'Princess',
             appearsIn: ['NEWHOPE'],
             totalCredits: 5,
-            friends: [{ id: 102 }]
+            friends: getFriends
         };
     }
     return null;
 }
 exports.root = {
     test: () => getHuman(101),
-    hero: (id) => getHuman(id)
+    hero: (id) => getHuman(id),
 };
 
 

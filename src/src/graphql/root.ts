@@ -1,11 +1,18 @@
+
+function getFriends(obj: { friendIds: number[] }, args: any, context: any) {
+    return obj.friendIds.map(x => getHuman(x));
+}
+
 function getHuman(id: number) {
+
     if (id === 101) {
         return {
             id: 101,
             name: 'Luke',
             appearsIn: ['NEWHOPE'],
             totalCredits: 5,
-            friends: [{ id: 102 }]
+            friendIds: [102],
+            friends: getFriends
         };
     } else if (id === 102) {
         return {
@@ -13,7 +20,7 @@ function getHuman(id: number) {
             name: 'Princess',
             appearsIn: ['NEWHOPE'],
             totalCredits: 5,
-            friends: [{ id: 102 }]
+            friends: getFriends
         };
     }
 
@@ -22,5 +29,6 @@ function getHuman(id: number) {
 
 export const root = {
     test: () => getHuman(101),
-    hero: (id: number) => getHuman(id)
+    hero: (id: number) => getHuman(id),
+    // human: (obj: any, args: { id: number }, context: any) => getHuman(args.id)
 };
