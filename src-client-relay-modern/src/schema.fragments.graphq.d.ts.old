@@ -1,0 +1,35 @@
+
+declare interface SchemaFragmentType {
+  query?: QueryFragmentType;
+  mutation?: MutationFragmentType;
+}
+
+declare interface QueryFragmentType {
+  todos?: Promise<TodoFragmentType[]>;
+  search?(text: string): Promise<TodoFragmentType[]>;
+}
+
+declare interface MutationFragmentType {
+  addTodo?(text: string, isComplete: boolean): Promise<TodoFragmentType>;
+  addTodoB?(todo: AddTodoBArgs): Promise<TodoFragmentType>;
+}
+
+declare interface TodoFragmentType {
+  text?: string;
+  isComplete?: boolean;
+  subTodos?: TodoFragmentType[];
+  otherSubTodos?: OtherTodoFragmentType[];
+  nextTodo?: TodoFragmentType;
+}
+
+declare interface OtherTodoFragmentType {
+  tb?: string;
+  isComplete?: boolean;
+}
+
+
+declare var SchemaFragment: SchemaFragmentType;
+declare var QueryFragment: QueryFragmentType;
+declare var MutationFragment: MutationFragmentType;
+declare var TodoFragment: TodoFragmentType;
+declare var OtherTodoFragment: OtherTodoFragmentType;

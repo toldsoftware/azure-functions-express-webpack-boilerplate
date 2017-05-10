@@ -1,0 +1,32 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Query {
+  todos: [Todo]
+  search(text: String!) : [Todo]
+}
+
+type Mutation {
+  addTodo(text:String!, isComplete:Boolean) : Todo
+  addTodoB(todo:AddTodoBArgs!) : Todo
+}
+
+input AddTodoBArgs {
+  text: String!
+  isComplete: Boolean
+}
+
+type Todo {
+  text: String!
+  isComplete: Boolean!
+  subTodos:[Todo]
+  otherSubTodos:[OtherTodo]
+  nextTodo: Todo
+}
+
+type OtherTodo{
+  tb: String!
+  isComplete: Boolean!
+}

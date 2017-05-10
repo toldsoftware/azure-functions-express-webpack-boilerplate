@@ -1,0 +1,26 @@
+{
+  "name": "typescript-graphql-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "tql": "./dist/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/commander": "^2.9.0",
+    "@types/glob": "^5.0.30",
+    "glob": "^7.1.1",
+    "tslint": "^5.2.0",
+    "tslint-react": "^3.0.0",
+    "typescript": "^2.3.2"
+  },
+  "dependencies": {
+    "commander": "^2.9.0",
+    "node-watch": "^0.5.4"
+  }
+}

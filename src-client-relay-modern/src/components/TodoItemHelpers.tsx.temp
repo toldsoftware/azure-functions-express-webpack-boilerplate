@@ -1,0 +1,21 @@
+import * as React from 'react';
+
+import { graphql } from "react-relay";
+import { FragmentComponent } from '../helpers';
+
+const g = graphql`
+fragment TodoItemHelpers_data on Todo {
+    text
+    isComplete
+}`;
+
+export const TodoItemsHelpers = FragmentComponent<TodoItemHelpers_data, {}, {}>(g,
+    (props, state) => {
+        const item = props.data;
+        return (
+            <div>
+                <input type="checkbox" checked={item.isComplete} />
+                <span>{item.text}</span>
+            </div>
+        );
+    });
