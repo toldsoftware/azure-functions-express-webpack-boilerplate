@@ -1,0 +1,23 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Query {
+  todos: [Todo]
+  todos_complete: [Todo]
+  todos_incomplete: [Todo]
+  search(text: String!): [Todo]
+}
+
+type Mutation {
+  addTodo(text:String!): Todo
+  markComplete(id:ID!): Todo
+  markIncomplete(id:ID!): Todo
+}
+
+type Todo {
+  id: ID!
+  text: String!
+  isComplete: Boolean!
+}

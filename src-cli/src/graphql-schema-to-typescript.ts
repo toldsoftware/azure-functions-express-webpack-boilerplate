@@ -16,7 +16,7 @@ export function graphqlSchemaToTypescript(sDoc: string, options: {
     };
 
     sDoc = ('\r\n' + sDoc + '\r\n');
-    const inputNames = sDoc.match(/input\s+([a-zA-Z0-9_-]+)/g).map(x => x.replace('input', '').trim());
+    const inputNames = (sDoc.match(/input\s+([a-zA-Z0-9_-]+)/g) || []).map(x => x.replace('input', '').trim());
 
     let tDoc = sDoc
         // Descriptions => Comments
