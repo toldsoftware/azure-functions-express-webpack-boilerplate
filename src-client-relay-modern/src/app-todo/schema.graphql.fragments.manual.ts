@@ -1,20 +1,20 @@
 
 declare interface SchemaFragmentType {
   query?: QueryFragmentType;
-  mutation?: MutationFragmentType;
+  // mutation?: MutationFragmentType;
 }
 
 // Remove Promise
 declare interface QueryFragmentType {
-  todos?(filter?: TodosFilterArgs): Promise<TodoFragmentType[]>;
-  search?(text: string): Promise<TodoFragmentType[]>;
+  todos?(filter?: TodosFilterArgs): TqlObservable<TodoFragmentType[]>;
+  search?(text: string): TqlObservable<TodoFragmentType[]>;
 }
 
-declare interface MutationFragmentType {
-  addTodo?(text: string): Promise<TodoFragmentType>;
-  markComplete?(id: string): Promise<TodoFragmentType>;
-  markIncomplete?(id: string): Promise<TodoFragmentType>;
-}
+// declare interface MutationFragmentType {
+//   addTodo?(text: string): Promise<TodoFragmentType>;
+//   markComplete?(id: string): Promise<TodoFragmentType>;
+//   markIncomplete?(id: string): Promise<TodoFragmentType>;
+// }
 
 declare interface TodoFragmentType {
   id?: string;
@@ -31,11 +31,11 @@ export var Fragments = {
   Query: null as QueryFragmentType,
   Todo: null as TodoFragmentType,
 
-  Mutation: {
-    addTodo: () => 'addTodo' as any,
-    markComplete: () => 'markComplete' as any,
-    markIncomplete: () => 'markIncomplete' as any,
-  } as MutationFragmentType,
+  // Mutation: {
+  //   addTodo: () => 'addTodo' as any,
+  //   markComplete: () => 'markComplete' as any,
+  //   markIncomplete: () => 'markIncomplete' as any,
+  // } as MutationFragmentType,
 }
 
 export enum TodosFilterArgs {

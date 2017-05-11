@@ -1,6 +1,7 @@
 import * as React from 'react';
+import { TqlSubject } from './subject';
 
-export function prom<T>(t: T): Promise<T> { return new Promise<T>(() => t); }
+export function obs<T>(t: T): TqlObservable<T> { return new TqlSubject<T>(t); }
 
 export function tql<Data, Props={}, State={}>(initialData: Data, comp: (data: Data, props: Props, state: State, children: React.ReactNode) => JSX.Element | null): React.Component<Props & { data: Data }, State> {
   return new TqlComponent(initialData, comp);
@@ -22,7 +23,7 @@ export class TqlComponent<Data, Props, State> extends React.PureComponent<Props 
 export function tqlroot<Data, Resolver, Props={}, State={}>(
   initialData: Data,
   resolver: Resolver,
-  comp: (data: Data, props: Props, state: State, children: React.ReactNode) => Promise<JSX.Element | null>,
+  comp: (data: Data, props: Props, state: State, children: React.ReactNode) => TqlObservable<JSX.Element | null>,
   loading: (data: Data, props: Props, state: State, children: React.ReactNode) => JSX.Element | null
 ): React.Component<Props, State> {
   return new TqlRootComponent(initialData, resolver, comp, loading);
@@ -33,7 +34,7 @@ export class TqlRootComponent<Data, Resolver, Props, State> extends React.PureCo
   constructor(
     private initialData: Data,
     private resolver: Resolver,
-    private renderInner: (data: Data, props: Props, state: State, children: React.ReactNode) => Promise<JSX.Element | null>,
+    private renderInner: (data: Data, props: Props, state: State, children: React.ReactNode) => TqlObservable<JSX.Element | null>,
     private renderLoading: (data: Data, props: Props, state: State, children: React.ReactNode) => JSX.Element | null
   ) {
     super();
@@ -51,9 +52,9 @@ export class TqlRootComponent<Data, Resolver, Props, State> extends React.PureCo
       const dataResolver = createResolver(this.initialData, this.resolver);
 
       this.renderInner(dataResolver, this.props, this.state as any, this.props.children)
-        .then((r) =>
+        .subscribe((r) =>
           this.setState({ _render: r })
-        );
+        , true);
     });
   }
 
