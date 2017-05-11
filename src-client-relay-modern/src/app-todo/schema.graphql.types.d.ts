@@ -5,10 +5,14 @@ declare interface Schema {
 }
 
 declare interface Query {
-  todos?: Todo[];
-  todos_complete?: Todo[];
-  todos_incomplete?: Todo[];
+  todos?(filter?: TodosFilter): Todo[];
   search?(text: string): Todo[];
+}
+
+declare enum TodosFilter{
+  ALL,
+  COMPLETE,
+  INCOMPLETE,
 }
 
 declare interface Mutation {

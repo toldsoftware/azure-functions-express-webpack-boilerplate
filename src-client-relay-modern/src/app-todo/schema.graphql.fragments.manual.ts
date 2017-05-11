@@ -4,10 +4,9 @@ declare interface SchemaFragmentType {
   mutation?: MutationFragmentType;
 }
 
+// Remove Promise
 declare interface QueryFragmentType {
-  todos?: Promise<TodoFragmentType[]>;
-  todos_complete?: Promise<TodoFragmentType[]>;
-  todos_incomplete?: Promise<TodoFragmentType[]>;
+  todos?(filter?: TodosFilterArgs): Promise<TodoFragmentType[]>;
   search?(text: string): Promise<TodoFragmentType[]>;
 }
 
@@ -32,4 +31,10 @@ export var Fragments = {
   Query: null as QueryFragmentType,
   Mutation: null as MutationFragmentType,
   Todo: null as TodoFragmentType,
+}
+
+export enum TodosFilterArgs{
+  ALL,
+  COMPLETE,
+  INCOMPLETE,
 }

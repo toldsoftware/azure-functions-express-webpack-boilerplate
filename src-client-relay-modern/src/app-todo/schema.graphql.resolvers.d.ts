@@ -5,9 +5,7 @@ declare interface SchemaResolver {
 }
 
 declare interface QueryResolver {
-  todos?: TodoResolver[] | Promise<TodoResolver[]> | (() => TodoResolver[]) | (() => Promise<TodoResolver[]>);
-  todos_complete?: TodoResolver[] | Promise<TodoResolver[]> | (() => TodoResolver[]) | (() => Promise<TodoResolver[]>);
-  todos_incomplete?: TodoResolver[] | Promise<TodoResolver[]> | (() => TodoResolver[]) | (() => Promise<TodoResolver[]>);
+  todos?(filter?: TodosFilter): TodoResolver[] | Promise<TodoResolver[]> | (() => TodoResolver[]) | (() => Promise<TodoResolver[]>);
   search?(text: string): TodoResolver[] | Promise<TodoResolver[]> | (() => TodoResolver[]) | (() => Promise<TodoResolver[]>);
 }
 
