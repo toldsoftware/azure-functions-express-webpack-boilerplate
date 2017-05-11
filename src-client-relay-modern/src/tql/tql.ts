@@ -71,3 +71,8 @@ function createResolver<TQuery, TResolver>(query: TQuery, resolver: TResolver): 
   // TODO: Create a resolver
   return resolver as any;
 }
+
+
+// export function mutate<T>(t: T): void {
+//   console.log('mutate', t);
+// }

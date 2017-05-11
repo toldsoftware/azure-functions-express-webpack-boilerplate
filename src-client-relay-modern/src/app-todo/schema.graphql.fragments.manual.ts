@@ -29,11 +29,16 @@ declare interface TodoFragmentType {
 export var Fragments = {
   Schema: null as SchemaFragmentType,
   Query: null as QueryFragmentType,
-  Mutation: null as MutationFragmentType,
   Todo: null as TodoFragmentType,
+
+  Mutation: {
+    addTodo: () => 'addTodo' as any,
+    markComplete: () => 'markComplete' as any,
+    markIncomplete: () => 'markIncomplete' as any,
+  } as MutationFragmentType,
 }
 
-export enum TodosFilterArgs{
+export enum TodosFilterArgs {
   ALL,
   COMPLETE,
   INCOMPLETE,
