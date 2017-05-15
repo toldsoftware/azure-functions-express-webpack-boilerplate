@@ -69,7 +69,6 @@ export class TqlRootComponent<Data, Resolver, Props, State> extends React.PureCo
 }
 
 function createResolver<TQuery, TResolver>(query: TQuery, resolver: TResolver): TQuery {
-  // TODO: Create a resolver
   return resolver as any;
 }
 

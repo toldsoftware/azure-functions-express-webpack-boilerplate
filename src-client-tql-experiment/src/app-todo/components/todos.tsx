@@ -1,5 +1,7 @@
+import { TqlSubject } from '../../tql/subject';
 import * as React from 'react';
 import { obs, tql, tqlroot } from '../../tql/tql';
+import { obsComp } from "../../tql/observableComponent";
 import { Fragments, TodosFilterArgs } from '../schema.graphql.fragments.manual';
 import { resolver, mutator } from '../resolver';
 
@@ -45,8 +47,9 @@ export const QueryData = Fragments.Query = {
 };
 
 export const TodoQueryContainer = () => tqlroot(QueryData, resolver, (data, props: { filter: TodosFilterArgs }) => {
+    console.log('TodoQueryContainer...render', props);
     return data.todos(props.filter).transform(todos => {
-        // console.log('TodoQueryContainer...todos...transform');
+        console.log('TodoQueryContainer...todos...transform', props);
 
         return (
             <div>
@@ -61,18 +64,19 @@ export const TodoQueryContainer = () => tqlroot(QueryData, resolver, (data, prop
 ));
 
 
-export const TodoApp = () => {
-    let filter = TodosFilterArgs.ALL;
+export const TodoApp = () => obsComp(() => {
+    let filter = new TqlSubject(TodosFilterArgs.ALL);
 
-    return (
+    return filter.transform(x => (
         <div>
-            <TodoQueryContainer filter={filter} />
+            {'' + x}
+            <TodoQueryContainer filter={x} />
             <div>
-                <div onClick={() => filter = TodosFilterArgs.ALL}>ALL</div>
-                <div onClick={() => filter = TodosFilterArgs.COMPLETE}>COMPLETE</div>
-                <div onClick={() => filter = TodosFilterArgs.INCOMPLETE}>INCOMPLETE</div>
+                <div onClick={() => filter.setValue(TodosFilterArgs.ALL)}>ALL</div>
+                <div onClick={() => filter.setValue(TodosFilterArgs.COMPLETE)}>COMPLETE</div>
+                <div onClick={() => filter.setValue(TodosFilterArgs.INCOMPLETE)}>INCOMPLETE</div>
             </div>
         </div>
-    );
-};
+    ));
+});
 
