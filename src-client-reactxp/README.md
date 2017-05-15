@@ -1,6 +1,6 @@
 # Boilerplate for ReactXP App
 
-Based on ReactXP Hello World Sample
+Based on ReactXP Hello World Sample. 
 
 ## Improvments
 
@@ -14,8 +14,20 @@ Based on ReactXP Hello World Sample
 
 - View Visualizer
     - Enable in webpack
-    - `webpack`
+        - `const enableBundleVisualizer = false;`
+    - Run webpack
+        - `webpack`
 
-- Live Reload
+- Run in Browser with Live Reload
     - `webpack -w`
 
+- Change Sample App 
+    - Modify the path in `index.tsx`
+    - Restart webpack
+
+
+## Note for Native
+
+Android and iOS Folders should be added from ReactXP Sample App to target native. 
+
+These have been excluded for now for simplicity.

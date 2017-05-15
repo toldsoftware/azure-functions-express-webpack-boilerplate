@@ -2,9 +2,9 @@
 * This file demonstrates a basic ReactXP app.
 */
 
-import RX = require('reactxp');
+import * as RX from 'reactxp';
 
-import ToggleSwitch from './ToggleSwitch';
+import ToggleSwitch from './toggleSwitch';
 
 interface AppState {
     toggleValue?: boolean;
@@ -43,7 +43,7 @@ const styles = {
     })
 };
 
-class App extends RX.Component<{}, AppState> {
+export class App extends RX.Component<{}, AppState> {
     private _translationValue: RX.Animated.Value;
     private _animatedStyle: RX.Types.AnimatedTextStyleRuleSet;
 
@@ -111,5 +111,3 @@ class App extends RX.Component<{}, AppState> {
         this.setState({ toggleValue: newValue });
     }
 }
-
-export = App;
