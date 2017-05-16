@@ -2,6 +2,10 @@ import * as RX from 'reactxp';
 import { Debug } from '../debug';
 
 export class SimpleComponentBase<T = {}, S = {}> extends RX.Component<T & { children?: JSX.Element | null }, S> {
+    // constructor() {
+    //     super();
+    //     this.state = {} as any;
+    // }
 }
 
 let __nextId = 0;

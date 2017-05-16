@@ -24,7 +24,7 @@ export class MainLayout extends SimpleComponentBase<
         return (
             <RX.View style={styles.fullColumn}>
                 <RX.View style={styles.fullRow}>
-                    <RX.View>{this.state.isExpanded}
+                    <RX.View>
                         {this.props.sideContent}
                     </RX.View>
                     <RX.View style={styles.fullColumn}>

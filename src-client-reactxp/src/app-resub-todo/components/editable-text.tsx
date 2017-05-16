@@ -120,7 +120,7 @@ class AutoScrollTextInput extends SimpleComponentBase<{
 
     componentDidMount() {
         const el = this.refs['textInput'];
-        // console.log('AutoScrollTextInput.componentDidMount', el);
+        console.log('AutoScrollTextInput.componentDidMount', el);
         if ((el as any).focus) {
             setTimeout(() => {
                 (el as any).focus();

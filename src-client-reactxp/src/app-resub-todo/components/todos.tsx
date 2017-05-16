@@ -1,5 +1,5 @@
-import { Value } from 'reactxp/dist/web/Animated';
 import * as RX from 'reactxp';
+import { VirtualListView, VirtualListViewItemInfo } from 'reactxp-virtuallistview/dist/VirtualListView';
 import { TodoItem, TodoStore } from '../todoStore';
 import { ComponentBase } from 'resub';
 import { Checkbox } from './checkbox';
@@ -73,6 +73,7 @@ const styles = {
     }),
 
     // Todo Items
+    todoItemHeight: 32,
     todoItem: RX.Styles.createViewStyle({
         flexDirection: 'row',
     }),
@@ -155,6 +156,39 @@ export const TodoList = () => storeComp(() => ({
     </RX.View>
 ));
 
+// Doesn't work
+/*
+interface TodoItemVirtualListInfo extends VirtualListViewItemInfo, TodoItem {
+
+}
+
+export const TodoList = () => storeComp(() => ({
+    todos: todoStore.getTodos_filtered().map(x => ({
+        ...x,
+        key: x.id,
+        height: styles.todoItemHeight,
+    } as TodoItemVirtualListInfo))
+}), (state) => (!state.todos.length ?
+    (
+        <RX.Text>No Items</RX.Text>
+    ) : (
+        <RX.View>
+            {state.todos.length}
+            <VirtualListView
+                itemList={state.todos}
+                renderItem={renderTodoItem}
+                animateChanges={false}
+                skipRenderIfItemUnchanged={false}
+            />
+        </RX.View>
+    )
+));
+
+const renderTodoItem = (x: TodoItemVirtualListInfo) => (
+    <RX.Text>TEST</RX.Text>
+    // <TodoItemComponent item={x} />
+);*/
+
 export const TodoFilters = () => storeComp(() => ({
     count_all: todoStore.getCount_all(),
     count_complete: todoStore.getCount_complete(),
@@ -184,7 +218,7 @@ export const TodoFilters = () => storeComp(() => ({
 export class TodoItemComponent extends ComponentBase<
     {
         item: TodoItem,
-        key: any
+        key?: any
     }, {}> {
 
     render() {

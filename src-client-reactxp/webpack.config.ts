@@ -151,7 +151,6 @@ if (enablePreact) {
 
 export default config;
 
-
 // Original:
 // import * as webpack from 'webpack';
 // 

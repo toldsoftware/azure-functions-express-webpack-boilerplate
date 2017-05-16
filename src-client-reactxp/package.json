@@ -36,6 +36,7 @@
     "react-native-windows": "^0.43.0-rc.0",
     "reactxp": "^0.42.0-rc.6",
     "reactxp-imagesvg": "^0.2.0",
+    "reactxp-virtuallistview": "^0.1.0",
     "resub": "^0.0.15"
   }
 }
