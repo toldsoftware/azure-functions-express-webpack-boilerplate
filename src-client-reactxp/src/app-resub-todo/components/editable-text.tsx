@@ -5,7 +5,7 @@ import { Debug } from './debug';
 import { ConfirmEdit, ConfirmEditStyle } from './confirm-edit';
 import { EditIcon } from './icons/edit';
 import { createIconStyle } from './icons/icon-base';
-import { View } from './layout/layout';
+import { View } from './common/index';
 
 const styles = {
     row: RX.Styles.createViewStyle({

@@ -43,6 +43,19 @@ class TodoStoreClass extends StoreBase {
         return this._todos.filter(x => !x.isComplete).length;
     }
 
+    reload = () => {
+        if (!this._todos.length) { return; }
+        
+        const oldTodos = this._todos;
+        this._todos = [];
+        this.trigger();
+
+        setTimeout(() => {
+            this._todos = oldTodos;
+            this.trigger();
+        }, 1000);
+    }
+
     setFilter = (filter: Filter) => {
         // log('setFilter', { filter });
 
