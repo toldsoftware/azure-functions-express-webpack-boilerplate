@@ -31,9 +31,11 @@
     "react-addons-perf": "^15.4.2",
     "react-addons-test-utils": "^15.5.1",
     "react-dom": "^15.5.4",
+    "react-icons": "^2.2.5",
     "react-native": "0.42.0",
     "react-native-windows": "^0.43.0-rc.0",
     "reactxp": "^0.42.0-rc.6",
+    "reactxp-imagesvg": "^0.2.0",
     "resub": "^0.0.15"
   }
 }

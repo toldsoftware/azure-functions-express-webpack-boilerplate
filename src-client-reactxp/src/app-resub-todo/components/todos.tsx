@@ -1,8 +1,17 @@
-import RX = require('reactxp');
+import { Value } from 'reactxp/dist/web/Animated';
+import * as RX from 'reactxp';
 import { TodoItem, TodoStore } from '../todoStore';
 import { ComponentBase } from 'resub';
+import { Checkbox } from './checkbox';
+import { ConfirmEdit, createConfirmEditStyle } from './confirm-edit';
+import { Debug } from './debug';
+import { EditableText } from './editable-text';
+import { createIconStyle } from './icons/icon-base';
 
 const styles = {
+    row: RX.Styles.createViewStyle({
+        flexDirection: 'row',
+    }),
     container: RX.Styles.createViewStyle({
         flex: 1,
         padding: 10,
@@ -31,10 +40,28 @@ const styles = {
     }),
 
     // Todo Items
+    todoItem: RX.Styles.createViewStyle({
+        flexDirection: 'row',
+    }),
     todoItemTitle: RX.Styles.createTextStyle({
         fontSize: 16,
+        paddingLeft: 8,
         color: '#333388',
     }),
+    todoItemTitle_Edit: RX.Styles.createTextStyle({
+        fontSize: 16,
+        paddingLeft: 8,
+        color: '#333388',
+    }),
+    todoItemCheckbox: createIconStyle({
+        fontSize: 16,
+        padding: 0,
+        fillColor: '#008800',
+    }),
+    confirmEdit: createConfirmEditStyle({
+        fontSize: 16,
+        padding: 0,
+    })
 };
 
 const todoStore = TodoStore;
@@ -61,6 +88,7 @@ export class TodoMainPage extends ComponentBase<{}, TodoMainPageState> {
     render() {
         return (
             <RX.ScrollView>
+                <Debug />
                 <RX.View style={styles.container}>
                     <RX.Text style={styles.welcome}>
                         Todo App
@@ -69,8 +97,11 @@ export class TodoMainPage extends ComponentBase<{}, TodoMainPageState> {
                         Resub Example
                     </RX.Text>
                     <RX.View style={styles.todoList}>
-                        {this.state.todos.map((x, i) => <TodoItemComponent item={x} key={i} />)}
+                        {this.state.todos.map((x, i) => <TodoItemComponent key={i} item={x} />)}
                     </RX.View>
+                    <RX.Button onPress={todoStore.addBlankTodoItem}>
+                        Add Todo
+                    </RX.Button>
                     <RX.View style={styles.todoFilters}>
                         <RX.Button onPress={() => todoStore.setFilter('all')}>
                             All ({this.state.count_all})
@@ -84,18 +115,37 @@ export class TodoMainPage extends ComponentBase<{}, TodoMainPageState> {
                     </RX.View>
                 </RX.View>
             </RX.ScrollView>
-
         );
     }
 
 }
 
-
-
-export const TodoItemComponent = (props: { item: TodoItem, key: any }) => (
+/*export const TodoItemComponent = (props: { item: TodoItem, key: any }) => (
     <RX.View>
         <RX.Text style={styles.todoItemTitle}>
             {props.item.title}
         </RX.Text>
     </RX.View>
-);
+);*/
+
+export class TodoItemComponent extends ComponentBase<
+    {
+        item: TodoItem,
+        key: any
+    }, {}> {
+
+    render() {
+        return (
+            <RX.View style={styles.todoItem}>
+                <Debug />
+                <Checkbox isChecked={this.props.item.isComplete}
+                    onPress={this.props.item.toggleIsComplete} style={styles.todoItemCheckbox} />
+                <EditableText text={this.props.item.title} onChange={this.props.item.setTitle}
+                    style={styles.todoItemTitle}
+                    editStyle={styles.todoItemTitle_Edit}
+                    confirmEditStyle={styles.confirmEdit}
+                />
+            </RX.View>
+        );
+    }
+}
