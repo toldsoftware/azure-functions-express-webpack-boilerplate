@@ -24,6 +24,7 @@ export class EditableText extends ComponentBase<
         style?: RX.Types.TextStyle,
         editStyle?: RX.Types.TextStyle,
         confirmEditStyle: ConfirmEditStyle,
+        buttonStyle?: RX.Types.ButtonStyle,
     },
     {
         isEditing: boolean,
@@ -84,7 +85,7 @@ export class EditableText extends ComponentBase<
                             <RX.Text style={this.props.style} onPress={this.startEdit}>
                                 {this.props.text}
                             </RX.Text>
-                            <RX.Button onPress={this.startEdit}>
+                            <RX.Button onPress={this.startEdit} style={this.props.buttonStyle}>
                                 <EditIcon style={styles.editIcon} />
                             </RX.Button>
                         </View>
@@ -93,7 +94,8 @@ export class EditableText extends ComponentBase<
                             <RX.TextInput
                                 style={this.props.editStyle} autoFocus={true}
                                 value={this.state.title_edit} onChangeText={this.setTitle_Edit} onSubmitEditing={this.acceptEdit} />
-                            <ConfirmEdit onAccept={this.acceptEdit} onCancel={this.cancelEdit} style={this.props.confirmEditStyle} />
+                            <ConfirmEdit onAccept={this.acceptEdit} onCancel={this.cancelEdit}
+                                style={this.props.confirmEditStyle} buttonStyle={this.props.buttonStyle} />
                         </View>
                     )}
             </View>

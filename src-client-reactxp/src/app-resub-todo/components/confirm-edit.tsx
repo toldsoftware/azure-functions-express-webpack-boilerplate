@@ -20,13 +20,18 @@ const styles = {
     }),
 };
 
-export const ConfirmEdit = (props: { onAccept: () => void, onCancel: () => void, style: ConfirmEditStyle }) => (
-    <RX.View style={styles.row}>
-        <RX.Button onPress={props.onAccept}>
-            <CheckIcon style={props.style} />
-        </RX.Button>
-        <RX.Button onPress={props.onCancel}>
-            <CancelIcon style={props.style} />
-        </RX.Button>
-    </RX.View>
-);
+export const ConfirmEdit = (props: {
+    onAccept: () => void,
+    onCancel: () => void,
+    style: ConfirmEditStyle,
+    buttonStyle?: RX.Types.ButtonStyle
+}) => (
+        <RX.View style={styles.row}>
+            <RX.Button onPress={props.onAccept} style={props.buttonStyle}>
+                <CheckIcon style={props.style} />
+            </RX.Button>
+            <RX.Button onPress={props.onCancel} style={props.buttonStyle} >
+                <CancelIcon style={props.style} />
+            </RX.Button>
+        </RX.View>
+    );

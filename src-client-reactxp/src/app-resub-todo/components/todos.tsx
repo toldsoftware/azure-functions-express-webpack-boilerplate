@@ -8,10 +8,25 @@ import { Debug } from './debug';
 import { EditableText } from './editable-text';
 import { createIconStyle } from './icons/icon-base';
 import { View, storeComp } from './layout/layout';
+import { AddIcon } from './icons/add';
 
 const styles = {
     row: RX.Styles.createViewStyle({
         flexDirection: 'row',
+    }),
+    icon: createIconStyle({
+        fontSize: 16,
+        padding: 0
+    }),
+    actionButton: RX.Styles.createButtonStyle({
+        backgroundColor: '#c5ccff',
+        padding: 8,
+        margin: 2,
+    }),
+    filterButton: RX.Styles.createButtonStyle({
+        backgroundColor: '#c5ffcc',
+        padding: 8,
+        margin: 2,
     }),
     container: RX.Styles.createViewStyle({
         flex: 1,
@@ -30,14 +45,15 @@ const styles = {
         marginBottom: 12
     }),
     todoList: RX.Styles.createViewStyle({
-        backgroundColor: '#cccccc'
+        // backgroundColor: '#cccccc'
     }),
 
     todoFilters: RX.Styles.createViewStyle({
         // flex: 1,
         flexDirection: 'row',
-        justifyContent: 'space-around',
-        backgroundColor: '#cccccc'
+        justifyContent: 'center',
+        // justifyContent: '',
+        // backgroundColor: '#cccccc'
     }),
 
     // Todo Items
@@ -46,6 +62,7 @@ const styles = {
     }),
     todoItemTitle: RX.Styles.createTextStyle({
         fontSize: 16,
+        lineHeight: 32,
         paddingLeft: 8,
         color: '#333388',
     }),
@@ -55,7 +72,7 @@ const styles = {
         color: '#333388',
     }),
     todoItemCheckbox: createIconStyle({
-        fontSize: 16,
+        fontSize: 32,
         padding: 0,
         fillColor: '#008800',
     }),
@@ -69,9 +86,9 @@ const todoStore = TodoStore;
 
 export const TodoMainPage = () => {
     return (
-        <RX.ScrollView>
+        <RX.ScrollView style={styles.container}>
             <Debug />
-            <View style={styles.container}>
+            <View>
                 <RX.Text style={styles.welcome}>
                     Todo App
                     </RX.Text>
@@ -79,9 +96,13 @@ export const TodoMainPage = () => {
                     Resub Example
                 </RX.Text>
                 <TodoList />
-                <RX.Button onPress={todoStore.addBlankTodoItem}>
-                    Add Todo
-                </RX.Button>
+                <RX.View style={styles.row}>
+                    <RX.Button onPress={todoStore.addBlankTodoItem} style={styles.actionButton}>
+                        <RX.View style={styles.row}>
+                            <AddIcon style={styles.icon} /> Add Todo
+                    </RX.View>
+                    </RX.Button>
+                </RX.View>
                 <TodoFilters />
             </View>
         </RX.ScrollView>
@@ -102,13 +123,13 @@ export const TodoFilters = () => storeComp(() => ({
     count_incomplete: todoStore.getCount_incomplete(),
 }), (state) => (
     <View style={styles.todoFilters}>
-        <RX.Button onPress={() => todoStore.setFilter('all')}>
+        <RX.Button onPress={() => todoStore.setFilter('all')} style={styles.filterButton}>
             All ({state.count_all})
         </RX.Button>
-        <RX.Button onPress={() => todoStore.setFilter('complete')}>
+        <RX.Button onPress={() => todoStore.setFilter('complete')} style={styles.filterButton}>
             Complete ({state.count_complete})
         </RX.Button>
-        <RX.Button onPress={() => todoStore.setFilter('incomplete')}>
+        <RX.Button onPress={() => todoStore.setFilter('incomplete')} style={styles.filterButton}>
             Incomplete ({state.count_incomplete})
         </RX.Button>
     </View>
@@ -138,6 +159,7 @@ export class TodoItemComponent extends ComponentBase<
                     style={styles.todoItemTitle}
                     editStyle={styles.todoItemTitle_Edit}
                     confirmEditStyle={styles.confirmEdit}
+                    buttonStyle={styles.actionButton}
                 />
             </View>
         );
