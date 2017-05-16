@@ -28,6 +28,21 @@ class TodoStoreClass extends StoreBase {
                     : true);
     }
 
+    @autoSubscribe
+    getCount_all() {
+        return this._todos.length;
+    }
+
+    @autoSubscribe
+    getCount_complete() {
+        return this._todos.filter(x => x.isComplete).length;
+    }
+
+    @autoSubscribe
+    getCount_incomplete() {
+        return this._todos.filter(x => !x.isComplete).length;
+    }
+
     setFilter = (filter: Filter) => {
         // log('setFilter', { filter });
 

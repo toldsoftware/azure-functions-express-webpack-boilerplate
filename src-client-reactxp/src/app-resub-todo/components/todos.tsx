@@ -7,6 +7,7 @@ import { ConfirmEdit, createConfirmEditStyle } from './confirm-edit';
 import { Debug } from './debug';
 import { EditableText } from './editable-text';
 import { createIconStyle } from './icons/icon-base';
+import { View, storeComp } from './layout/layout';
 
 const styles = {
     row: RX.Styles.createViewStyle({
@@ -66,59 +67,52 @@ const styles = {
 
 const todoStore = TodoStore;
 
-interface TodoMainPageState {
-    todos: TodoItem[];
-    count_all: number;
-    count_complete: number;
-    count_incomplete: number;
-}
-
-export class TodoMainPage extends ComponentBase<{}, TodoMainPageState> {
-
-    protected _buildState(): TodoMainPageState {
-        const todos = todoStore.getTodos();
-        return {
-            todos: todoStore.getTodos_filtered(),
-            count_all: todos.length,
-            count_complete: todos.filter(x => x.isComplete).length,
-            count_incomplete: todos.filter(x => !x.isComplete).length,
-        };
-    }
-
-    render() {
-        return (
-            <RX.ScrollView>
-                <Debug />
-                <RX.View style={styles.container}>
-                    <RX.Text style={styles.welcome}>
-                        Todo App
+export const TodoMainPage = () => {
+    return (
+        <RX.ScrollView>
+            <Debug />
+            <View style={styles.container}>
+                <RX.Text style={styles.welcome}>
+                    Todo App
                     </RX.Text>
-                    <RX.Text style={styles.welcome2}>
-                        Resub Example
-                    </RX.Text>
-                    <RX.View style={styles.todoList}>
-                        {this.state.todos.map((x, i) => <TodoItemComponent key={i} item={x} />)}
-                    </RX.View>
-                    <RX.Button onPress={todoStore.addBlankTodoItem}>
-                        Add Todo
-                    </RX.Button>
-                    <RX.View style={styles.todoFilters}>
-                        <RX.Button onPress={() => todoStore.setFilter('all')}>
-                            All ({this.state.count_all})
-                        </RX.Button>
-                        <RX.Button onPress={() => todoStore.setFilter('complete')}>
-                            Complete ({this.state.count_complete})
-                        </RX.Button>
-                        <RX.Button onPress={() => todoStore.setFilter('incomplete')}>
-                            Incomplete ({this.state.count_incomplete})
-                        </RX.Button>
-                    </RX.View>
-                </RX.View>
-            </RX.ScrollView>
-        );
-    }
+                <RX.Text style={styles.welcome2}>
+                    Resub Example
+                </RX.Text>
+                <TodoList />
+                <RX.Button onPress={todoStore.addBlankTodoItem}>
+                    Add Todo
+                </RX.Button>
+                <TodoFilters />
+            </View>
+        </RX.ScrollView>
+    );
+};
 
-}
+export const TodoList = () => storeComp(() => ({
+    todos: todoStore.getTodos_filtered()
+}), (state) => (
+    <View style={styles.todoList}>
+        {state.todos.map((x, i) => <TodoItemComponent key={i} item={x} />)}
+    </View>
+));
+
+export const TodoFilters = () => storeComp(() => ({
+    count_all: todoStore.getCount_all(),
+    count_complete: todoStore.getCount_complete(),
+    count_incomplete: todoStore.getCount_incomplete(),
+}), (state) => (
+    <View style={styles.todoFilters}>
+        <RX.Button onPress={() => todoStore.setFilter('all')}>
+            All ({state.count_all})
+        </RX.Button>
+        <RX.Button onPress={() => todoStore.setFilter('complete')}>
+            Complete ({state.count_complete})
+        </RX.Button>
+        <RX.Button onPress={() => todoStore.setFilter('incomplete')}>
+            Incomplete ({state.count_incomplete})
+        </RX.Button>
+    </View>
+));
 
 /*export const TodoItemComponent = (props: { item: TodoItem, key: any }) => (
     <RX.View>
@@ -136,7 +130,7 @@ export class TodoItemComponent extends ComponentBase<
 
     render() {
         return (
-            <RX.View style={styles.todoItem}>
+            <View style={styles.todoItem} shouldAnimateKey={this.props.item.title}>
                 <Debug />
                 <Checkbox isChecked={this.props.item.isComplete}
                     onPress={this.props.item.toggleIsComplete} style={styles.todoItemCheckbox} />
@@ -145,7 +139,7 @@ export class TodoItemComponent extends ComponentBase<
                     editStyle={styles.todoItemTitle_Edit}
                     confirmEditStyle={styles.confirmEdit}
                 />
-            </RX.View>
+            </View>
         );
     }
 }

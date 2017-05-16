@@ -5,6 +5,7 @@ import { Debug } from './debug';
 import { ConfirmEdit, ConfirmEditStyle } from './confirm-edit';
 import { EditIcon } from './icons/edit';
 import { createIconStyle } from './icons/icon-base';
+import { View } from './layout/layout';
 
 const styles = {
     row: RX.Styles.createViewStyle({
@@ -75,27 +76,27 @@ export class EditableText extends ComponentBase<
 
     render() {
         return (
-            <RX.View style={styles.row}>
+            <View style={styles.row} shouldAnimateKey={this.props.text + '' + this.state.isEditing}>
                 <Debug />
                 {!this.state.isEditing ?
                     (
-                        <RX.View style={styles.row}>
+                        <View style={styles.row}>
                             <RX.Text style={this.props.style} onPress={this.startEdit}>
                                 {this.props.text}
                             </RX.Text>
                             <RX.Button onPress={this.startEdit}>
                                 <EditIcon style={styles.editIcon} />
                             </RX.Button>
-                        </RX.View>
+                        </View>
                     ) : (
-                        <RX.View style={styles.row}>
+                        <View style={styles.row} >
                             <RX.TextInput
                                 style={this.props.editStyle} autoFocus={true}
                                 value={this.state.title_edit} onChangeText={this.setTitle_Edit} onSubmitEditing={this.acceptEdit} />
                             <ConfirmEdit onAccept={this.acceptEdit} onCancel={this.cancelEdit} style={this.props.confirmEditStyle} />
-                        </RX.View>
+                        </View>
                     )}
-            </RX.View>
+            </View>
         );
     }
 }
