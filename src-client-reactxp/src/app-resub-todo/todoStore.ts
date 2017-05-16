@@ -45,7 +45,7 @@ class TodoStoreClass extends StoreBase {
 
     reload = () => {
         if (!this._todos.length) { return; }
-        
+
         const oldTodos = this._todos;
         this._todos = [];
         this.trigger();
@@ -68,7 +68,7 @@ class TodoStoreClass extends StoreBase {
         this.trigger();
     }
 
-    addTodoItem = (title: string = 'New Task', isComplete = false) => {
+    addTodoItem = (title: string = '', isComplete = false) => {
         // log('addTodo', { title, isComplete });
 
         // this._todos.push(createTodoItem(this, { title, isComplete }));

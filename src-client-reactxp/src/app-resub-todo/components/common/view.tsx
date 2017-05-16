@@ -5,11 +5,11 @@ export class SimpleComponentBase<T = {}, S = {}> extends RX.Component<T & { chil
 }
 
 let __nextId = 0;
-export class View extends SimpleComponentBase<{ shouldAnimateKey?: any, style?: RX.Types.ViewStyle }> {
+export class AnimView extends SimpleComponentBase<{ shouldAnimateOnLoad?: boolean, shouldAnimateKey?: any, style?: RX.Types.ViewStyle }> {
 
-    private _in_animScaleValue = new RX.Animated.Value(0.0);
+    private _in_animScaleValue = new RX.Animated.Value(1);
     private _in_animTiming = RX.Animated.timing(this._in_animScaleValue,
-        { toValue: 1.0, duration: 250, easing: RX.Animated.Easing.InOut() }
+        { toValue: 1.0, duration: 500, easing: RX.Animated.Easing.InOut() }
     );
     private _in_animStyle = RX.Styles.createAnimatedViewStyle({
         // opacity: animatedOpacityValue,
@@ -22,7 +22,13 @@ export class View extends SimpleComponentBase<{ shouldAnimateKey?: any, style?: 
 
     private _in_play = () => {
         const newKey = this.props.shouldAnimateKey || null;
-        if (this._animateKey !== newKey) {
+
+        if (this.props.shouldAnimateOnLoad === false
+            && this._animateKey === undefined) {
+            this._animateKey = newKey;
+            this._in_animScaleValue.setValue(1);
+
+        } else if (this._animateKey !== newKey) {
             this._animateKey = newKey;
             this._in_animScaleValue.setValue(0);
             this._in_animTiming.start();

@@ -7,12 +7,12 @@ import { ConfirmEdit, createConfirmEditStyle } from './confirm-edit';
 import { Debug } from './debug';
 import { EditableText } from './editable-text';
 import { createIconStyle } from './icons/icon-base';
-import { View, storeComp } from './common/index';
+import { AnimView, storeComp } from './common/index';
 import { AddIcon } from './icons/add';
 import { MainLayout } from './common/layout';
-import { CheckboxCheckedIcon } from "./icons/checkbox-checked";
-import { CheckboxEmptyIcon } from "./icons/checkbox-empty";
-import { CheckboxSolidIcon } from "./icons/checkbox-solid";
+import { CheckboxCheckedIcon } from './icons/checkbox-checked';
+import { CheckboxEmptyIcon } from './icons/checkbox-empty';
+import { CheckboxSolidIcon } from './icons/checkbox-solid';
 
 const styles = {
     row: RX.Styles.createViewStyle({
@@ -115,9 +115,12 @@ export const TodoMainPage = () => {
             </RX.Button>
         </View>
     );*/
+    const createAndFocus = () => {
+        todoStore.addBlankTodoItem();
+    };
     const bottomTabContent = (
         <RX.View style={styles.row}>
-            <RX.Button onPress={todoStore.addBlankTodoItem} style={styles.actionButton}>
+            <RX.Button onPress={createAndFocus} style={styles.actionButton}>
                 <RX.View style={styles.row}>
                     <AddIcon style={styles.icon} /> Add Todo
                 </RX.View>
@@ -129,7 +132,7 @@ export const TodoMainPage = () => {
         <MainLayout sideContent={sideContent} bottomTabContent={bottomTabContent}>
             <RX.ScrollView style={styles.container}>
                 <Debug />
-                <View>
+                <RX.View>
                     <RX.Text style={styles.welcome}>
                         Todo App
                     </RX.Text>
@@ -137,7 +140,7 @@ export const TodoMainPage = () => {
                         Resub Example
                     </RX.Text>
                     <TodoList />
-                </View>
+                </RX.View>
             </RX.ScrollView>
         </MainLayout>
     );
@@ -146,9 +149,10 @@ export const TodoMainPage = () => {
 export const TodoList = () => storeComp(() => ({
     todos: todoStore.getTodos_filtered()
 }), (state) => (
-    <View style={styles.todoList}>
+    <RX.View style={styles.todoList}>
+        {!state.todos.length && <RX.Text>No Items</RX.Text>}
         {state.todos.map((x, i) => <TodoItemComponent key={i} item={x} />)}
-    </View>
+    </RX.View>
 ));
 
 export const TodoFilters = () => storeComp(() => ({
@@ -156,7 +160,7 @@ export const TodoFilters = () => storeComp(() => ({
     count_complete: todoStore.getCount_complete(),
     count_incomplete: todoStore.getCount_incomplete(),
 }), (state) => (
-    <View style={styles.todoFilters}>
+    <RX.View style={styles.todoFilters}>
         <RX.Button onPress={() => todoStore.setFilter('all')} style={styles.tabButton}>
             <CheckboxSolidIcon style={styles.icon} /> All ({state.count_all})
         </RX.Button>
@@ -166,7 +170,7 @@ export const TodoFilters = () => storeComp(() => ({
         <RX.Button onPress={() => todoStore.setFilter('incomplete')} style={styles.tabButton}>
             <CheckboxEmptyIcon style={styles.icon} /> Incomplete ({state.count_incomplete})
         </RX.Button>
-    </View>
+    </RX.View>
 ));
 
 /*export const TodoItemComponent = (props: { item: TodoItem, key: any }) => (
@@ -185,17 +189,23 @@ export class TodoItemComponent extends ComponentBase<
 
     render() {
         return (
-            <View style={styles.todoItem} shouldAnimateKey={this.props.item.title}>
+            <RX.View style={styles.todoItem} >
+                {/*<AnimView style={styles.row} shouldAnimateOnLoad={false} shouldAnimateKey={this.props.item.title}>*/}
                 <Debug />
                 <Checkbox isChecked={this.props.item.isComplete}
                     onPress={this.props.item.toggleIsComplete} style={styles.todoItemCheckbox} />
-                <EditableText text={this.props.item.title} onChange={this.props.item.setTitle}
+                <EditableText
+                    text={this.props.item.title}
+                    placeholder='New Task'
+                    isEditing={!this.props.item.title}
+                    onChange={this.props.item.setTitle}
                     style={styles.todoItemTitle}
                     editStyle={styles.todoItemTitle_Edit}
                     confirmEditStyle={styles.confirmEdit}
                     buttonStyle={styles.actionButton}
                 />
-            </View>
+                {/*</AnimView>*/}
+            </RX.View>
         );
     }
 }

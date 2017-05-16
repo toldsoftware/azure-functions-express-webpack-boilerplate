@@ -1,5 +1,5 @@
 import * as RX from 'reactxp';
-import { View, SimpleComponentBase } from './view';
+import { AnimView, SimpleComponentBase } from './view';
 
 const styles = {
     fullRow: RX.Styles.createViewStyle({
@@ -22,19 +22,19 @@ export class MainLayout extends SimpleComponentBase<
 
     render() {
         return (
-            <View style={styles.fullColumn}>
-                <View style={styles.fullRow}>
-                    <View>{this.state.isExpanded}
+            <RX.View style={styles.fullColumn}>
+                <RX.View style={styles.fullRow}>
+                    <RX.View>{this.state.isExpanded}
                         {this.props.sideContent}
-                    </View>
-                    <View style={styles.fullColumn}>
+                    </RX.View>
+                    <RX.View style={styles.fullColumn}>
                         {this.props.children}
-                    </View>
-                </View>
-                <View>
+                    </RX.View>
+                </RX.View>
+                <RX.View>
                     {this.props.bottomTabContent}
-                </View>
-            </View>
+                </RX.View>
+            </RX.View>
         );
     }
 }
